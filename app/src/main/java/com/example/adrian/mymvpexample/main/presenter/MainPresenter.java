@@ -8,6 +8,7 @@ public interface MainPresenter {
 
     void setUpNavDrawer();
 
+    void refreshNavDrawerItemsCheck(final int navItemIndex);
 
 
 }

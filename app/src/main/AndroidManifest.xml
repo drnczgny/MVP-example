@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".main.view.MainActivity" />
-        <activity android:name=".apteligent.view.ApteligentActivity"></activity>
+        <activity android:name=".apteligent.view.ApteligentActivity" />
+        <activity android:name=".omdb.view.OmdbApiActivity"></activity>
     </application>
 
 </manifest>

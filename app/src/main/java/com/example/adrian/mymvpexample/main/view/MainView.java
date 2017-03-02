@@ -8,6 +8,8 @@ public interface MainView {
 
     void setUpNavDrawer();
 
+//    void refreshNavDrawerItemsCheck();
 
+    void refreshNavDrawerItemsCheck(final int id);
 
 }

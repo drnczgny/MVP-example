@@ -15,19 +15,19 @@ public class LoginInteractorImpl implements LoginInteractor {
             @Override
             public void run() {
                 boolean error = false;
-                if(username == null || username.equals("")) {
+                if (username == null || username.equals("")) {
                     onLoginFinishedListener.onUsernameError();
                     error = true;
                 }
-                if(password == null || password.equals("")) {
+                if (password == null || password.equals("")) {
                     onLoginFinishedListener.onPasswordError();
                     error = true;
                 }
-                if(! error) {
+                if (!error) {
                     onLoginFinishedListener.onSuccess();
                 }
             }
-        },200);
+        }, 200);
     }
 
 }

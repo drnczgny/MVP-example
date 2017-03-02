@@ -18,4 +18,10 @@ public class MainPresenterImpl implements MainPresenter {
     public void setUpNavDrawer() {
         mainView.setUpNavDrawer();
     }
+
+    @Override
+    public void refreshNavDrawerItemsCheck(final int navItemIndex) {
+        mainView.refreshNavDrawerItemsCheck(navItemIndex);
+    }
+
 }

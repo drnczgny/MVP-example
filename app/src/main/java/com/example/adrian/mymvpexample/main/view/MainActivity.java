@@ -16,6 +16,7 @@ import com.example.adrian.mymvpexample.app.MyApp;
 import com.example.adrian.mymvpexample.apteligent.view.ApteligentActivity;
 import com.example.adrian.mymvpexample.main.presenter.MainPresenter;
 import com.example.adrian.mymvpexample.main.presenter.MainPresenterImpl;
+import com.example.adrian.mymvpexample.omdb.view.OmdbApiActivity;
 
 import javax.inject.Inject;
 
@@ -55,6 +56,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mainPresenter.refreshNavDrawerItemsCheck(navItemIndex);
+    }
+
+    @Override
     public void setUpNavDrawer() {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -64,24 +71,32 @@ public class MainActivity extends AppCompatActivity implements MainView {
                         navItemIndex = 0;
                         break;
                     case R.id.nav_apteligent:
-                        navItemIndex = 1;
                         startActivity(new Intent(MainActivity.this, ApteligentActivity.class));
                         drawerLayout.closeDrawers();
                         return true;
+                    case R.id.nav_ombdapi:
+                        startActivity(new Intent(MainActivity.this, OmdbApiActivity.class));
+                        drawerLayout.closeDrawers();
+                        return true;
+                    case R.id.nav_movies:
+                        navItemIndex = 3;
+                        break;
                     default:
                         navItemIndex = 0;
                 }
-
-                if (menuItem.isChecked()) {
-                    menuItem.setChecked(false);
-                } else {
-                    menuItem.setChecked(true);
-                }
-                menuItem.setChecked(true);
-
+//                if (menuItem.isChecked()) {
+//                    menuItem.setChecked(false);
+//                } else {
+//                    menuItem.setChecked(true);
+//                }
                 return true;
             }
         });
+    }
+
+    @Override
+    public void refreshNavDrawerItemsCheck(final int navItemIndex) {
+        navigationView.getMenu().getItem(navItemIndex).setChecked(true);
     }
 
     @Override
