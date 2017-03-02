@@ -12,9 +12,6 @@ public class OmdbApiActivity extends AppCompatActivity {
 
     private static final String TAG = OmdbApiActivity.class.getName();
 
-//    @BindView(R.id.content_frame)
-//    FrameLayout content_frame;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +24,6 @@ public class OmdbApiActivity extends AppCompatActivity {
             omdbApiFragment = OmdbApiFragment.newInstance();
         }
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), omdbApiFragment, R.id.content_frame);
-
-
-
-
 
     }
 }

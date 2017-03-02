@@ -1,4 +1,4 @@
-package com.example.adrian.mymvpexample.main.model;
+package com.example.adrian.mymvpexample.omdb.model;
 
 /**
  * Created by Adrian_Czigany on 3/2/2017.
