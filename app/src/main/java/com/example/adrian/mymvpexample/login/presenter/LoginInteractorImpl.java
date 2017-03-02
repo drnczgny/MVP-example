@@ -1,6 +1,5 @@
 package com.example.adrian.mymvpexample.login.presenter;
 
-import android.content.SharedPreferences;
 import android.os.Handler;
 
 /**
@@ -8,12 +7,6 @@ import android.os.Handler;
  */
 
 public class LoginInteractorImpl implements LoginInteractor {
-
-    private SharedPreferences sharedPreferences;
-
-    public LoginInteractorImpl() {
-//        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences();
-    }
 
     @Override
     public void validateLoginCredentials(final String username, final String password, final OnLoginFinishedListener onLoginFinishedListener) {
@@ -34,14 +27,7 @@ public class LoginInteractorImpl implements LoginInteractor {
                     onLoginFinishedListener.onSuccess();
                 }
             }
-        },500);
-
-
-    }
-
-    @Override
-    public void storeCredentials(String username, String password) {
-
+        },200);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.adrian.mymvpexample.login.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,9 +10,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.example.adrian.mymvpexample.R;
+import com.example.adrian.mymvpexample.app.MyApp;
 import com.example.adrian.mymvpexample.login.presenter.LoginPresenter;
 import com.example.adrian.mymvpexample.login.presenter.LoginPresenterImpl;
 import com.example.adrian.mymvpexample.main.view.MainActivity;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +34,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @BindView(R.id.progress)
     ProgressBar progressBar;
 
+    @Inject
+    SharedPreferences sharedPreferences;
 
     private LoginPresenter loginPresenterImpl = new LoginPresenterImpl(this);
 
@@ -38,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
+        ((MyApp) getApplication()).getAppComponent().inject(this);
     }
 
     @OnClick(R.id.btnLogIn)
@@ -64,6 +70,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void errorOnPassword() {
         etPassword.setError("Cannot be empty");
+    }
+
+    @Override
+    public void credentialsVerified() {
+        loginPresenterImpl.saveCredentialsToSharedPreferences(sharedPreferences, etUsername.getText().toString());
     }
 
     @Override

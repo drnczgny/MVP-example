@@ -14,6 +14,8 @@ public interface LoginView {
 
     void errorOnPassword();
 
+    void credentialsVerified();
+
     void navigateToMain();
 
 }

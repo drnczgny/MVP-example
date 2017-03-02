@@ -2,8 +2,8 @@ package com.example.adrian.mymvpexample.app;
 
 import android.content.SharedPreferences;
 
-import com.example.adrian.mymvpexample.login.presenter.LoginPresenterImpl;
 import com.example.adrian.mymvpexample.login.view.LoginActivity;
+import com.example.adrian.mymvpexample.main.view.MainActivity;
 
 import javax.inject.Singleton;
 
@@ -19,8 +19,10 @@ public interface AppComponent {
 
     SharedPreferences prefs();
 
+    void inject(MyApp myApp);
+
     void inject(LoginActivity loginActivity);
 
-    void inject(LoginPresenterImpl loginPresenterImpl);
+    void inject(MainActivity mainActivity);
 
 }

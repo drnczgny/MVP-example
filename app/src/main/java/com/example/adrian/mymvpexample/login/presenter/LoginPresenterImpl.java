@@ -1,5 +1,6 @@
 package com.example.adrian.mymvpexample.login.presenter;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.adrian.mymvpexample.login.view.LoginView;
@@ -19,14 +20,20 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLog
     public LoginPresenterImpl(LoginView loginView) {
         this.loginView = loginView;
         loginInteractor = new LoginInteractorImpl();
-
     }
 
     @Override
     public void validateCredentials(String username, String password) {
-        Log.i(TAG, "validateCredentials");
         loginView.showProgressBar();
         loginInteractor.validateLoginCredentials(username, password, this);
+    }
+
+    @Override
+    public void saveCredentialsToSharedPreferences(SharedPreferences sharedPreferences, final String username) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("logged_username", username);
+        editor.commit();
+        loginView.navigateToMain();
     }
 
     @Override
@@ -43,7 +50,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLog
 
     @Override
     public void onSuccess() {
-        loginView.navigateToMain();
+        loginView.credentialsVerified();
         loginView.hideProgressBar();
     }
 }

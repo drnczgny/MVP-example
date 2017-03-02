@@ -13,7 +13,10 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        appComponent = DaggerAppComponent.builder().appModule(new AppModule(getApplicationContext())).build();
+
+        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+
+        appComponent.inject(this);
     }
 
     public AppComponent getAppComponent() {

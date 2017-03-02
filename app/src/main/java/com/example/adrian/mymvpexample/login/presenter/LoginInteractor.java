@@ -17,6 +17,4 @@ public interface LoginInteractor {
 
     void validateLoginCredentials(final String username, final String password, final OnLoginFinishedListener onLoginFinishedListener);
 
-    void storeCredentials(final String username, final String password);
-
 }
