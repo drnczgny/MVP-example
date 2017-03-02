@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     protected void onResume() {
         super.onResume();
-        mainPresenter.refreshNavDrawerItemsCheck(navItemIndex);
+        refreshNavDrawerItemsCheck(navItemIndex);
     }
 
     @Override
@@ -84,17 +84,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
                     default:
                         navItemIndex = 0;
                 }
-//                if (menuItem.isChecked()) {
-//                    menuItem.setChecked(false);
-//                } else {
-//                    menuItem.setChecked(true);
-//                }
                 return true;
             }
         });
     }
 
-    @Override
     public void refreshNavDrawerItemsCheck(final int navItemIndex) {
         navigationView.getMenu().getItem(navItemIndex).setChecked(true);
     }

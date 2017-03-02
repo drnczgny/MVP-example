@@ -19,9 +19,5 @@ public class MainPresenterImpl implements MainPresenter {
         mainView.setUpNavDrawer();
     }
 
-    @Override
-    public void refreshNavDrawerItemsCheck(final int navItemIndex) {
-        mainView.refreshNavDrawerItemsCheck(navItemIndex);
-    }
 
 }
