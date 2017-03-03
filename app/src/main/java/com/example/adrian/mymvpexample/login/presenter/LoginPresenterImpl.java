@@ -1,7 +1,6 @@
 package com.example.adrian.mymvpexample.login.presenter;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.example.adrian.mymvpexample.login.view.LoginView;
 

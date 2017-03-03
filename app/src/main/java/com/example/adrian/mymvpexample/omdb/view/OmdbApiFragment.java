@@ -22,7 +22,6 @@ public class OmdbApiFragment extends Fragment implements OmdbApiView {
 
     private OmdbPresenter omdbPresenter = new OmdbPresenterImpl(this);
 
-
     public OmdbApiFragment() {
     }
 
@@ -44,6 +43,9 @@ public class OmdbApiFragment extends Fragment implements OmdbApiView {
 
         ButterKnife.bind(this, view);
 
+        omdbPresenter.findAllMovie();
+        omdbPresenter.findMovieByTitle("Superman");
+
         return view;
     }
 
@@ -51,5 +53,6 @@ public class OmdbApiFragment extends Fragment implements OmdbApiView {
     public void onButtonPressed(Uri uri) {
 
     }
+
 
 }

@@ -1,10 +1,10 @@
 package com.example.adrian.mymvpexample.omdb.presenter;
 
 /**
- * Created by Adrian_Czigany on 3/2/2017.
+ * Created by Adrian_Czigany on 3/3/2017.
  */
 
-public interface OmdbPresenter {
+public interface OmdbInteractor {
 
     void findAllMovie();
 
