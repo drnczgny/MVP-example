@@ -7,20 +7,38 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.adrian.mymvpexample.R;
+import com.example.adrian.mymvpexample.app.MyApp;
 import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenter;
 import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenterImpl;
+import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class OmdbApiFragment extends Fragment implements OmdbApiView {
 
     @BindView(R.id.rvMovies)
     RecyclerView rvMovies;
 
-    private OmdbPresenter omdbPresenter = new OmdbPresenterImpl(this);
+    @BindView(R.id.btnFindByYear)
+    Button btnFindByYear;
+
+    @BindView(R.id.btnFindByTitle)
+    Button btnFindByTitle;
+
+    @BindView(R.id.btnFindByBoth)
+    Button btnFindByBoth;
+
+    @Inject
+    OmdbApiService omdbApiService;
+
+    private OmdbPresenter omdbPresenter;
 
     public OmdbApiFragment() {
     }
@@ -43,10 +61,27 @@ public class OmdbApiFragment extends Fragment implements OmdbApiView {
 
         ButterKnife.bind(this, view);
 
-        omdbPresenter.findAllMovie();
-        omdbPresenter.findMovieByTitle("Superman");
+        ((MyApp) getActivity().getApplication()).getAppComponent().inject(this);
+
+        omdbPresenter = new OmdbPresenterImpl(this, omdbApiService);
 
         return view;
+    }
+
+    @OnClick(R.id.btnFindByYear)
+    public void onClickBtnFindByYear() {
+        omdbPresenter.findMovieByYear(2010);
+    }
+
+    @OnClick(R.id.btnFindByTitle)
+    public void onClickBtnFindByTitle() {
+        omdbPresenter.findMovieByTitle("Superman");
+    }
+
+    @OnClick(R.id.btnFindByBoth)
+    public void onClickBtnFindByBoth() {
+        omdbPresenter.findMovieByYear(2010);
+        omdbPresenter.findMovieByTitle("Superman");
     }
 
     // TODO: Rename method, update argument and hook method into UI event

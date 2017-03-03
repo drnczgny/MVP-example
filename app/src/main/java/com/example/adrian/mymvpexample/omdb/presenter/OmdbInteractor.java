@@ -10,4 +10,6 @@ public interface OmdbInteractor {
 
     void findMovieByTitle(final String title);
 
+    void findMovieByYear(final int year);
+
 }

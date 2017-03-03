@@ -29,8 +29,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @BindView(R.id.navigationView)
     NavigationView navigationView;
+
     @BindView(R.id.drawerLayout)
     DrawerLayout drawerLayout;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -46,12 +48,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
         setSupportActionBar(toolbar);
 
         ((MyApp) getApplication()).getAppComponent().inject(this);
 
         mainPresenter = new MainPresenterImpl(this);
-
         mainPresenter.setUpNavDrawer();
     }
 

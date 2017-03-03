@@ -1,5 +1,6 @@
 package com.example.adrian.mymvpexample.omdb.presenter;
 
+import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiView;
 
 /**
@@ -9,11 +10,13 @@ import com.example.adrian.mymvpexample.omdb.view.OmdbApiView;
 public class OmdbPresenterImpl implements OmdbPresenter {
 
     private OmdbApiView omdbApiView;
+    private OmdbApiService omdbApiService;
     private OmdbInteractor omdbInteractor;
 
-    public OmdbPresenterImpl(OmdbApiView omdbApiView) {
+    public OmdbPresenterImpl(OmdbApiView omdbApiView, OmdbApiService omdbApiService) {
         this.omdbApiView = omdbApiView;
-        omdbInteractor = new OmdbInteractorImpl();
+        this.omdbApiService = omdbApiService;
+        this.omdbInteractor = new OmdbInteractorImpl(this.omdbApiService);
     }
 
     @Override
@@ -24,5 +27,10 @@ public class OmdbPresenterImpl implements OmdbPresenter {
     @Override
     public void findMovieByTitle(String title) {
         omdbInteractor.findMovieByTitle(title);
+    }
+
+    @Override
+    public void findMovieByYear(int year) {
+        omdbInteractor.findMovieByYear(year);
     }
 }

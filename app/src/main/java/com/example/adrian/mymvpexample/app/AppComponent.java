@@ -1,9 +1,9 @@
 package com.example.adrian.mymvpexample.app;
 
-import android.content.SharedPreferences;
-
 import com.example.adrian.mymvpexample.login.view.LoginActivity;
 import com.example.adrian.mymvpexample.main.view.MainActivity;
+import com.example.adrian.mymvpexample.omdb.di.OmdbModule;
+import com.example.adrian.mymvpexample.omdb.view.OmdbApiFragment;
 
 import javax.inject.Singleton;
 
@@ -14,10 +14,10 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {AppModule.class})
+@Component(modules = {AppModule.class, OmdbModule.class})
 public interface AppComponent {
 
-    SharedPreferences prefs();
+//    SharedPreferences prefs();
 
     void inject(MyApp myApp);
 
@@ -25,4 +25,5 @@ public interface AppComponent {
 
     void inject(MainActivity mainActivity);
 
+    void inject(OmdbApiFragment omdbApiFragment);
 }
