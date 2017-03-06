@@ -3,6 +3,10 @@ package com.example.adrian.mymvpexample.app;
 import android.app.Activity;
 import android.app.Application;
 
+import com.example.adrian.mymvpexample.app.di.AppComponent;
+import com.example.adrian.mymvpexample.app.di.AppModule;
+import com.example.adrian.mymvpexample.app.di.DaggerAppComponent;
+
 /**
  * Created by Adrian_Czigany on 3/1/2017.
  */

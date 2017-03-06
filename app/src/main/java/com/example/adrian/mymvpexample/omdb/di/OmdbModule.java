@@ -27,6 +27,12 @@ public class OmdbModule {
         return omdbApiService;
     }
 
+//    @Provides
+//    @OmdbScope
+//    public SharedPreferences sharedPreferences(SharedPreferences sharedPreferences) {
+//        return sharedPreferences;
+//    }
+
 //    @Singleton
 //    @Provides
 //    @Named("OmdbPresenterImpl")

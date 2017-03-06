@@ -1,4 +1,4 @@
-package com.example.adrian.mymvpexample.app;
+package com.example.adrian.mymvpexample.app.di;
 
 import javax.inject.Scope;
 

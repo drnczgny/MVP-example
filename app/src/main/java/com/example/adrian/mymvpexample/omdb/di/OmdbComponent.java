@@ -1,6 +1,6 @@
 package com.example.adrian.mymvpexample.omdb.di;
 
-import com.example.adrian.mymvpexample.app.AppComponent;
+import com.example.adrian.mymvpexample.app.di.AppComponent;
 import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiActivity;
 

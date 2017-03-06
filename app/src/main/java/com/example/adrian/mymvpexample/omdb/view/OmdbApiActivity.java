@@ -1,5 +1,6 @@
 package com.example.adrian.mymvpexample.omdb.view;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +38,9 @@ public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
     Button btnFindByBoth;
 
     @Inject
+    SharedPreferences sharedPreferences;
+
+    @Inject
     OmdbApiService omdbApiService;
 
     private OmdbPresenter omdbPresenter;
@@ -59,6 +63,8 @@ public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
         omdbComponent.inject(this);
 
         omdbPresenter = new OmdbPresenterImpl(this, omdbApiService);
+
+        sharedPreferences.toString();
 
 
         /* *****************************************************************************

@@ -1,7 +1,9 @@
-package com.example.adrian.mymvpexample.app;
+package com.example.adrian.mymvpexample.app.di;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.example.adrian.mymvpexample.app.MyApp;
 
 import dagger.Module;
 import dagger.Provides;
