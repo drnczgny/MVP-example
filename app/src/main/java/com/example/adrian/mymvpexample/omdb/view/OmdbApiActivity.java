@@ -1,6 +1,5 @@
 package com.example.adrian.mymvpexample.omdb.view;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -37,19 +36,7 @@ public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
     Button btnFindByBoth;
 
     @Inject
-    SharedPreferences sharedPreferences;
-
-//    @Inject
-//    OmdbApiService omdbApiService;
-
-//    private OmdbPresenter omdbPresenter;
-
-    @Inject
     OmdbPresenter omdbPresenter;
-
-//    @Inject
-//    @Named("OmdbPresenterImpl")
-//    OmdbPresenterImpl omdbPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,20 +51,6 @@ public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
                 .build();
         omdbComponent.inject(this);
 
-
-
-
-
-        /* *****************************************************************************
-        *****************************************************************************
-        * *****************************************************************************
-        * *****************************************************************************
-        */
-//        OmdbApiFragment omdbApiFragment = (OmdbApiFragment) getSupportFragmentManager().findFragmentById(R.id.content_frame);
-//        if(omdbApiFragment == null) {
-//            omdbApiFragment = OmdbApiFragment.newInstance();
-//        }
-//        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), omdbApiFragment, R.id.content_frame);
     }
 
     @OnClick(R.id.btnFindByYear)

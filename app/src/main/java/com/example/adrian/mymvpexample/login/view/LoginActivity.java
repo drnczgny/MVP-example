@@ -44,9 +44,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        ((MyApp) getApplication()).getAppComponent().inject(this);
 
-        sharedPreferences.toString();
+        ((MyApp) getApplication()).getAppComponent().inject(this);
 
     }
 
