@@ -27,7 +27,6 @@ public class OmdbInteractorImpl implements OmdbInteractor {
 
     @Override
     public void findAllMovie() {
-//        OmdbApiService omdbApiService = OmdbApiService.retrofit.create(OmdbApiService.class);
         Call<String> call = omdbApiService.findAllMovie();
 
         Log.i(TAG, call.request().url().toString());
@@ -52,7 +51,6 @@ public class OmdbInteractorImpl implements OmdbInteractor {
 
     @Override
     public void findMovieByYear(final int year) {
-//        OmdbApiService omdbApiService = OmdbApiService.retrofit.create(OmdbApiService.class);
 
         Map<String, Integer> data = new HashMap<>();
         data.put("y", year);
@@ -81,7 +79,6 @@ public class OmdbInteractorImpl implements OmdbInteractor {
 
     @Override
     public void findMovieByTitle(final String title) {
-//        OmdbApiService omdbApiService = OmdbApiService.retrofit.create(OmdbApiService.class);
 
         Map<String, String> data = new HashMap<>();
         data.put("t", title);

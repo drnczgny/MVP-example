@@ -10,12 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.adrian.mymvpexample.R;
-import com.example.adrian.mymvpexample.app.MyApp;
 import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenter;
-import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenterImpl;
-import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,10 +30,14 @@ public class OmdbApiFragment extends Fragment implements OmdbApiView {
     @BindView(R.id.btnFindByBoth)
     Button btnFindByBoth;
 
-    @Inject
-    OmdbApiService omdbApiService;
+//    @Inject
+//    OmdbApiService omdbApiService;
 
     private OmdbPresenter omdbPresenter;
+
+//    @Inject
+//    @Named("OmdbPresenterImpl")
+//    OmdbPresenterImpl omdbPresenter;
 
     public OmdbApiFragment() {
     }
@@ -61,9 +60,14 @@ public class OmdbApiFragment extends Fragment implements OmdbApiView {
 
         ButterKnife.bind(this, view);
 
-        ((MyApp) getActivity().getApplication()).getAppComponent().inject(this);
+//        ((MyApp) getActivity().getApplication()).getAppComponent().inject(this);
 
-        omdbPresenter = new OmdbPresenterImpl(this, omdbApiService);
+//        DaggerOmdbComponent.builder()
+//                .omdbModule(new OmdbModule(this))
+//                .appComponent(MyApp.get(this).getAppComponent())
+//                .build();
+
+//        omdbPresenter = new OmdbPresenterImpl(this, omdbApiService);
 
         return view;
     }

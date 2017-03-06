@@ -3,8 +3,6 @@ package com.example.adrian.mymvpexample.app;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -21,15 +19,17 @@ public class AppModule {
         this.myApp = myApp;
     }
 
-    @Singleton
+    @AppScope
     @Provides
     public Context providesApplicationContext() {
         return myApp;
     }
 
-    @Singleton
+    @AppScope
     @Provides
     public SharedPreferences provideSharedPreferences(Context app) {
         return app.getSharedPreferences("PREFS", Context.MODE_PRIVATE);
     }
+
+
 }
