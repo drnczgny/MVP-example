@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Button;
 
 import com.example.adrian.mymvpexample.R;
@@ -12,8 +13,6 @@ import com.example.adrian.mymvpexample.omdb.di.DaggerOmdbComponent;
 import com.example.adrian.mymvpexample.omdb.di.OmdbComponent;
 import com.example.adrian.mymvpexample.omdb.di.OmdbModule;
 import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenter;
-import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenterImpl;
-import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 
 import javax.inject.Inject;
 
@@ -40,10 +39,13 @@ public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
     @Inject
     SharedPreferences sharedPreferences;
 
-    @Inject
-    OmdbApiService omdbApiService;
+//    @Inject
+//    OmdbApiService omdbApiService;
 
-    private OmdbPresenter omdbPresenter;
+//    private OmdbPresenter omdbPresenter;
+
+    @Inject
+    OmdbPresenter omdbPresenter;
 
 //    @Inject
 //    @Named("OmdbPresenterImpl")
@@ -62,16 +64,15 @@ public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
                 .build();
         omdbComponent.inject(this);
 
-        omdbPresenter = new OmdbPresenterImpl(this, omdbApiService);
 
-        sharedPreferences.toString();
+
 
 
         /* *****************************************************************************
         *****************************************************************************
         * *****************************************************************************
         * *****************************************************************************
-         */
+        */
 //        OmdbApiFragment omdbApiFragment = (OmdbApiFragment) getSupportFragmentManager().findFragmentById(R.id.content_frame);
 //        if(omdbApiFragment == null) {
 //            omdbApiFragment = OmdbApiFragment.newInstance();
@@ -93,5 +94,10 @@ public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
     public void onClickBtnFindByBoth() {
         omdbPresenter.findMovieByYear(2010);
         omdbPresenter.findMovieByTitle("Superman");
+    }
+
+    @Override
+    public void test() {
+        Log.i(TAG, " OK test !!! ");
     }
 }

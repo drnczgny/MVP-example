@@ -6,5 +6,6 @@ package com.example.adrian.mymvpexample.omdb.view;
 
 public interface OmdbApiView {
 
+    public void test();
 
 }

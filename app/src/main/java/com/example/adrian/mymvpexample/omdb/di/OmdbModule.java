@@ -1,5 +1,7 @@
 package com.example.adrian.mymvpexample.omdb.di;
 
+import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenter;
+import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenterImpl;
 import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiActivity;
 
@@ -27,16 +29,10 @@ public class OmdbModule {
         return omdbApiService;
     }
 
-//    @Provides
-//    @OmdbScope
-//    public SharedPreferences sharedPreferences(SharedPreferences sharedPreferences) {
-//        return sharedPreferences;
-//    }
+    @Provides
+    @OmdbScope
+    public OmdbPresenter provideOmdbPresenter(OmdbApiService omdbApiService) {
+        return new OmdbPresenterImpl(omdbApiActivity, omdbApiService);
+    }
 
-//    @Singleton
-//    @Provides
-//    @Named("OmdbPresenterImpl")
-//    public OmdbPresenterImpl providesOmdbPresenterImpl(OmdbApiService omdbApiService) {
-//        return new OmdbPresenterImpl((OmdbApiView) omdbApiFragment, omdbApiService);
-//    }
 }

@@ -32,5 +32,7 @@ public class OmdbPresenterImpl implements OmdbPresenter {
     @Override
     public void findMovieByYear(int year) {
         omdbInteractor.findMovieByYear(year);
+        omdbApiView.test();
     }
+
 }

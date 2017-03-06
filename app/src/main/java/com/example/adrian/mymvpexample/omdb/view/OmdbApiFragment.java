@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class OmdbApiFragment extends Fragment implements OmdbApiView {
+public class OmdbApiFragment extends Fragment {
 
     @BindView(R.id.rvMovies)
     RecyclerView rvMovies;
