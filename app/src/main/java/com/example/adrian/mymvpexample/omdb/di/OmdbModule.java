@@ -32,8 +32,8 @@ public class OmdbModule {
 
     @Provides
     @OmdbScope
-    public OmdbPresenter provideOmdbPresenter(OmdbApiView omdbApiView, OmdbApiService omdbApiService) {
-        return new OmdbPresenterImpl(omdbApiView, omdbApiService);
+    public OmdbPresenter provideOmdbPresenter(OmdbApiService omdbApiService) {
+        return new OmdbPresenterImpl(provideOmdApiView(), omdbApiService);
     }
 
     @Provides
