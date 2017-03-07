@@ -3,8 +3,6 @@ package com.example.adrian.mymvpexample.app.di;
 import android.content.SharedPreferences;
 
 import com.example.adrian.mymvpexample.app.MyApp;
-import com.example.adrian.mymvpexample.login.view.LoginActivity;
-import com.example.adrian.mymvpexample.main.view.MainActivity;
 
 import dagger.Component;
 import retrofit2.Retrofit;
@@ -23,8 +21,8 @@ public interface AppComponent {
 
     void inject(MyApp myApp);
 
-    void inject(LoginActivity loginActivity);
-
-    void inject(MainActivity mainActivity);
+//    void inject(LoginActivity loginActivity);
+//
+//    void inject(MainActivity mainActivity);
 
 }

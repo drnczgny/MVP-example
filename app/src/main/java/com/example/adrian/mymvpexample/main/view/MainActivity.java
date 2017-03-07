@@ -14,8 +14,10 @@ import android.widget.Toast;
 import com.example.adrian.mymvpexample.R;
 import com.example.adrian.mymvpexample.app.MyApp;
 import com.example.adrian.mymvpexample.apteligent.view.ApteligentActivity;
+import com.example.adrian.mymvpexample.main.di.DaggerMainComponent;
+import com.example.adrian.mymvpexample.main.di.MainComponent;
+import com.example.adrian.mymvpexample.main.di.MainModule;
 import com.example.adrian.mymvpexample.main.presenter.MainPresenter;
-import com.example.adrian.mymvpexample.main.presenter.MainPresenterImpl;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiActivity;
 
 import javax.inject.Inject;
@@ -39,8 +41,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Inject
     SharedPreferences sharedPreferences;
 
+    @Inject
+    MainPresenter mainPresenter;
+
     private int navItemIndex = 0;
-    private MainPresenter mainPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +56,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         setSupportActionBar(toolbar);
 
-        ((MyApp) getApplication()).getAppComponent().inject(this);
+        MainComponent mainComponent = DaggerMainComponent.builder()
+                .mainModule(new MainModule(this))
+                .appComponent(MyApp.get(this).getAppComponent())
+                .build();
+        mainComponent.inject(this);
 
-        mainPresenter = new MainPresenterImpl(this);
         mainPresenter.setUpNavDrawer();
     }
 

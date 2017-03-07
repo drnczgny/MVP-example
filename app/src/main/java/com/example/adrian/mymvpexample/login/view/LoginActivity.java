@@ -11,8 +11,10 @@ import android.widget.ProgressBar;
 
 import com.example.adrian.mymvpexample.R;
 import com.example.adrian.mymvpexample.app.MyApp;
+import com.example.adrian.mymvpexample.login.di.DaggerLoginComponent;
+import com.example.adrian.mymvpexample.login.di.LoginComponent;
+import com.example.adrian.mymvpexample.login.di.LoginModule;
 import com.example.adrian.mymvpexample.login.presenter.LoginPresenter;
-import com.example.adrian.mymvpexample.login.presenter.LoginPresenterImpl;
 import com.example.adrian.mymvpexample.main.view.MainActivity;
 
 import javax.inject.Inject;
@@ -37,7 +39,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Inject
     SharedPreferences sharedPreferences;
 
-    private LoginPresenter loginPresenterImpl = new LoginPresenterImpl(this);
+    @Inject
+    LoginPresenter loginPresenterImpl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        ((MyApp) getApplication()).getAppComponent().inject(this);
+        LoginComponent loginComponent = DaggerLoginComponent.builder()
+                .loginModule(new LoginModule(this))
+                .appComponent(MyApp.get(this).getAppComponent())
+                .build();
+        loginComponent.inject(this);
 
     }
 
