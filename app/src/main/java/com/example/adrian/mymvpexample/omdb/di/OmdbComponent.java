@@ -1,6 +1,8 @@
 package com.example.adrian.mymvpexample.omdb.di;
 
 import com.example.adrian.mymvpexample.app.di.AppComponent;
+import com.example.adrian.mymvpexample.omdb.presenter.OmdbInteractorImpl;
+import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenterImpl;
 import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiActivity;
 
@@ -17,5 +19,9 @@ public interface OmdbComponent {
     OmdbApiService omdbApiService();
 
     void inject(OmdbApiActivity omdbApiActivity);
+
+    void inject(OmdbInteractorImpl omdbInteractorImpl);
+
+    void inject(OmdbPresenterImpl omdbPresenterImpl);
 
 }

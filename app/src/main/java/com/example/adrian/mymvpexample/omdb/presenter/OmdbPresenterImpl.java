@@ -1,6 +1,5 @@
 package com.example.adrian.mymvpexample.omdb.presenter;
 
-import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiView;
 
 /**
@@ -10,13 +9,11 @@ import com.example.adrian.mymvpexample.omdb.view.OmdbApiView;
 public class OmdbPresenterImpl implements OmdbPresenter {
 
     private OmdbApiView omdbApiView;
-    private OmdbApiService omdbApiService;
     private OmdbInteractor omdbInteractor;
 
-    public OmdbPresenterImpl(OmdbApiView omdbApiView, OmdbApiService omdbApiService) {
+    public OmdbPresenterImpl(OmdbApiView omdbApiView, OmdbInteractor omdbInteractor) {
         this.omdbApiView = omdbApiView;
-        this.omdbApiService = omdbApiService;
-        this.omdbInteractor = new OmdbInteractorImpl(this.omdbApiService);
+        this.omdbInteractor = omdbInteractor;
     }
 
     @Override

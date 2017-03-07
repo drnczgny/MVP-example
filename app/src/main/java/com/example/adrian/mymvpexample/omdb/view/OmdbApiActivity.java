@@ -12,6 +12,7 @@ import com.example.adrian.mymvpexample.omdb.di.DaggerOmdbComponent;
 import com.example.adrian.mymvpexample.omdb.di.OmdbComponent;
 import com.example.adrian.mymvpexample.omdb.di.OmdbModule;
 import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenter;
+import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 
 import javax.inject.Inject;
 
@@ -38,6 +39,9 @@ public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
     @Inject
     OmdbPresenter omdbPresenter;
 
+    @Inject
+    OmdbApiService omdbApiService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +55,7 @@ public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
                 .build();
         omdbComponent.inject(this);
 
+        omdbApiService.toString();
     }
 
     @OnClick(R.id.btnFindByYear)

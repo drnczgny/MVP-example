@@ -1,5 +1,7 @@
 package com.example.adrian.mymvpexample.omdb.di;
 
+import com.example.adrian.mymvpexample.omdb.presenter.OmdbInteractor;
+import com.example.adrian.mymvpexample.omdb.presenter.OmdbInteractorImpl;
 import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenter;
 import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenterImpl;
 import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
@@ -19,8 +21,14 @@ public class OmdbModule {
 
     private OmdbApiActivity omdbApiActivity;
 
+    private OmdbInteractor omdbInteractor;
+
     public OmdbModule(OmdbApiActivity omdbApiActivity) {
         this.omdbApiActivity = omdbApiActivity;
+    }
+
+    public OmdbModule(OmdbInteractor omdbInteractor) {
+        this.omdbInteractor = omdbInteractor;
     }
 
     @Provides
@@ -32,8 +40,14 @@ public class OmdbModule {
 
     @Provides
     @OmdbScope
-    public OmdbPresenter provideOmdbPresenter(OmdbApiService omdbApiService) {
-        return new OmdbPresenterImpl(provideOmdApiView(), omdbApiService);
+    OmdbInteractor provideOmdbInteractor() {
+        return new OmdbInteractorImpl(provideOmdApiView());
+    }
+
+    @Provides
+    @OmdbScope
+    public OmdbPresenter provideOmdbPresenter() {
+        return new OmdbPresenterImpl(provideOmdApiView(), provideOmdbInteractor());
     }
 
     @Provides
