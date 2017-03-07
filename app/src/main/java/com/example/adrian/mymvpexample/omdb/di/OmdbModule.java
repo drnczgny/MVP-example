@@ -4,6 +4,7 @@ import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenter;
 import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenterImpl;
 import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiActivity;
+import com.example.adrian.mymvpexample.omdb.view.OmdbApiView;
 
 import dagger.Module;
 import dagger.Provides;
@@ -31,8 +32,14 @@ public class OmdbModule {
 
     @Provides
     @OmdbScope
-    public OmdbPresenter provideOmdbPresenter(OmdbApiService omdbApiService) {
-        return new OmdbPresenterImpl(omdbApiActivity, omdbApiService);
+    public OmdbPresenter provideOmdbPresenter(OmdbApiView omdbApiView, OmdbApiService omdbApiService) {
+        return new OmdbPresenterImpl(omdbApiView, omdbApiService);
+    }
+
+    @Provides
+    @OmdbScope
+    OmdbApiView provideOmdApiView() {
+        return omdbApiActivity;
     }
 
 }
