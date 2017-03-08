@@ -33,7 +33,7 @@ public class JsonPlaceholderApiInteractorImpl implements JsonPlaceholderApiInter
         this.jsonPlaceholderApiView = jsonPlaceholderApiView;
 
         JsonPlaceholderApiComponent jsonPlaceholderApiComponent = DaggerJsonPlaceholderApiComponent.builder()
-                .jsonPlaceholderApiModule(new JsonPlaceholderApiModule(this))
+                .jsonPlaceholderApiModule(new JsonPlaceholderApiModule((JsonPlaceholderApiActivity)jsonPlaceholderApiView))
                 .appComponent(MyApp.get((JsonPlaceholderApiActivity)jsonPlaceholderApiView).getAppComponent())
                 .build();
         jsonPlaceholderApiComponent.inject(this);

@@ -23,14 +23,8 @@ public class JsonPlaceholderApiModule {
 
     JsonPlaceholderApiActivity jsonPlaceholderApiActivity;
 
-    JsonPlaceholderApiInteractor jsonPlaceholderApiInteractor;
-
     public JsonPlaceholderApiModule(JsonPlaceholderApiActivity jsonPlaceholderApiActivity) {
         this.jsonPlaceholderApiActivity = jsonPlaceholderApiActivity;
-    }
-
-    public JsonPlaceholderApiModule(JsonPlaceholderApiInteractor jsonPlaceholderApiInteractor) {
-        this.jsonPlaceholderApiInteractor = jsonPlaceholderApiInteractor;
     }
 
     @JsonPlaceholderScope
@@ -55,7 +49,7 @@ public class JsonPlaceholderApiModule {
     @JsonPlaceholderScope
     @Provides
     JsonPlaceholderApiPresenter providesJsonPlaceholderApiPresenter() {
-        return new JsonPlaceholderApiPresenterImpl(providesJsonPlaceholderApiView(), provideJsonPlaceholderApiInteractor());
+        return new JsonPlaceholderApiPresenterImpl(providesJsonPlaceholderApiView());
     }
 
 }
