@@ -81,8 +81,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
                     case R.id.nav_home:
                         navItemIndex = 0;
                         break;
-<<<<<<< Updated upstream
-=======
                     case R.id.nav_ombdapi:
                         startActivity(new Intent(MainActivity.this, OmdbApiActivity.class));
                         drawerLayout.closeDrawers();
@@ -91,13 +89,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
                         startActivity(new Intent(MainActivity.this, JsonPlaceholderApiActivity.class));
                         drawerLayout.closeDrawers();
                         return true;
->>>>>>> Stashed changes
                     case R.id.nav_apteligent:
                         startActivity(new Intent(MainActivity.this, ApteligentActivity.class));
-                        drawerLayout.closeDrawers();
-                        return true;
-                    case R.id.nav_ombdapi:
-                        startActivity(new Intent(MainActivity.this, OmdbApiActivity.class));
                         drawerLayout.closeDrawers();
                         return true;
                     case R.id.nav_movies:
