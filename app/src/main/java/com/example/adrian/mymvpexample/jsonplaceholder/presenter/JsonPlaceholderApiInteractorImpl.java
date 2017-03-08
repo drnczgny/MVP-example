@@ -39,6 +39,11 @@ public class JsonPlaceholderApiInteractorImpl implements JsonPlaceholderApiInter
         jsonPlaceholderApiComponent.inject(this);
 
         findAllPost();
+        findAllComment();
+        findAllAlbum();
+        findAllPhoto();
+        findAllTodo();
+        findAllUser();
     }
 
     public void findAllPost() {
@@ -59,7 +64,116 @@ public class JsonPlaceholderApiInteractorImpl implements JsonPlaceholderApiInter
             public void onFailure(Call<String> call, Throwable t) {
                 Log.i(TAG, "onFailure");
                 System.out.println(t.getMessage());
-                // Log error here since request failed
+            }
+        });
+    }
+
+    public void findAllComment() {
+        Call<String> call = jsonPlaceholderApiService.findAllComment();
+
+        Log.i(TAG, call.request().url().toString());
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.i(TAG, "onResponse");
+                int statusCode = response.code();
+                String simpleString = response.body();
+                Log.i(TAG, simpleString);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i(TAG, "onFailure");
+                System.out.println(t.getMessage());
+            }
+        });
+    }
+
+    public void findAllAlbum() {
+        Call<String> call = jsonPlaceholderApiService.findAllAlbum();
+
+        Log.i(TAG, call.request().url().toString());
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.i(TAG, "onResponse");
+                int statusCode = response.code();
+                String simpleString = response.body();
+                Log.i(TAG, simpleString);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i(TAG, "onFailure");
+                System.out.println(t.getMessage());
+            }
+        });
+    }
+
+    public void findAllPhoto() {
+        Call<String> call = jsonPlaceholderApiService.findAllPhoto();
+
+        Log.i(TAG, call.request().url().toString());
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.i(TAG, "onResponse");
+                int statusCode = response.code();
+                String simpleString = response.body();
+                Log.i(TAG, simpleString);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i(TAG, "onFailure");
+                System.out.println(t.getMessage());
+            }
+        });
+    }
+
+    public void findAllTodo() {
+        Call<String> call = jsonPlaceholderApiService.findAllTodo();
+
+        Log.i(TAG, call.request().url().toString());
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.i(TAG, "onResponse");
+                int statusCode = response.code();
+                String simpleString = response.body();
+                Log.i(TAG, simpleString);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i(TAG, "onFailure");
+                System.out.println(t.getMessage());
+            }
+        });
+    }
+
+    public void findAllUser() {
+        Call<String> call = jsonPlaceholderApiService.findAllUser();
+
+        Log.i(TAG, call.request().url().toString());
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.i(TAG, "onResponse");
+                int statusCode = response.code();
+                String simpleString = response.body();
+                Log.i(TAG, simpleString);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i(TAG, "onFailure");
+                System.out.println(t.getMessage());
             }
         });
     }

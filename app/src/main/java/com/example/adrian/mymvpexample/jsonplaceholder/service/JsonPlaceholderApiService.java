@@ -20,4 +20,12 @@ public interface JsonPlaceholderApiService {
     @GET("/albums")
     Call<String> findAllAlbum();
 
+    @GET("/photos")
+    Call<String> findAllPhoto();
+
+    @GET("/todos")
+    Call<String> findAllTodo();
+
+    @GET("/users")
+    Call<String> findAllUser();
 }
