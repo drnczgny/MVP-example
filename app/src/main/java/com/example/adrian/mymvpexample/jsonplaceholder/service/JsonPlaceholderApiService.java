@@ -9,8 +9,6 @@ import retrofit2.http.GET;
 
 public interface JsonPlaceholderApiService {
 
-    public static final String BASE_URL = "http://jsonplaceholder.typicode.com";
-
     @GET("/posts")
     Call<String> findAllPost();
 
