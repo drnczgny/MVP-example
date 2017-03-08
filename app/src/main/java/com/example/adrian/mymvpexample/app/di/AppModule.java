@@ -3,7 +3,7 @@ package com.example.adrian.mymvpexample.app.di;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.adrian.mymvpexample.app.MyApp;
+import com.example.adrian.mymvpexample.app.BaseApp;
 
 import dagger.Module;
 import dagger.Provides;
@@ -15,16 +15,16 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-    private final MyApp myApp;
+    private final BaseApp baseApp;
 
-    public AppModule(MyApp myApp) {
-        this.myApp = myApp;
+    public AppModule(BaseApp myApp) {
+        this.baseApp = myApp;
     }
 
     @AppScope
     @Provides
     public Context providesApplicationContext() {
-        return myApp;
+        return baseApp;
     }
 
     @AppScope

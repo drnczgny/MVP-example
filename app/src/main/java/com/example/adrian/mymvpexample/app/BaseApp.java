@@ -11,12 +11,12 @@ import com.example.adrian.mymvpexample.app.di.DaggerAppComponent;
  * Created by Adrian_Czigany on 3/1/2017.
  */
 
-public class MyApp extends Application {
+public class BaseApp extends Application {
 
     AppComponent appComponent;
 
-    public static MyApp get(Activity activity) {
-        return (MyApp) activity.getApplication();
+    public static BaseApp get(Activity activity) {
+        return (BaseApp) activity.getApplication();
     }
 
     @Override

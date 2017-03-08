@@ -2,7 +2,7 @@ package com.example.adrian.mymvpexample.app.di;
 
 import android.content.SharedPreferences;
 
-import com.example.adrian.mymvpexample.app.MyApp;
+import com.example.adrian.mymvpexample.app.BaseApp;
 
 import javax.inject.Named;
 
@@ -23,6 +23,6 @@ public interface AppComponent {
 
     @Named("jsonplaceholderapi") Retrofit retrofitFor();
 
-    void inject(MyApp myApp);
+    void inject(BaseApp myApp);
 
 }

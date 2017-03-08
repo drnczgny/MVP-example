@@ -1,6 +1,6 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.presenter;
 
-import com.example.adrian.mymvpexample.app.MyApp;
+import com.example.adrian.mymvpexample.app.BaseApp;
 import com.example.adrian.mymvpexample.jsonplaceholder.di.DaggerJsonPlaceholderApiComponent;
 import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
 import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiModule;
@@ -46,7 +46,7 @@ public class JsonPlaceholderApiPresenterImpl implements JsonPlaceholderApiPresen
 
         JsonPlaceholderApiComponent jsonPlaceholderApiComponent = DaggerJsonPlaceholderApiComponent.builder()
                 .jsonPlaceholderApiModule(new JsonPlaceholderApiModule((JsonPlaceholderApiActivity) jsonPlaceholderApiView))
-                .appComponent(MyApp.get((JsonPlaceholderApiActivity)jsonPlaceholderApiView).getAppComponent())
+                .appComponent(BaseApp.get((JsonPlaceholderApiActivity)jsonPlaceholderApiView).getAppComponent())
                 .build();
         jsonPlaceholderApiComponent.inject(this);
 

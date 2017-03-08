@@ -2,7 +2,7 @@ package com.example.adrian.mymvpexample.jsonplaceholder.interactor;
 
 import android.util.Log;
 
-import com.example.adrian.mymvpexample.app.MyApp;
+import com.example.adrian.mymvpexample.app.BaseApp;
 import com.example.adrian.mymvpexample.jsonplaceholder.di.DaggerJsonPlaceholderApiComponent;
 import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
 import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiModule;
@@ -34,7 +34,7 @@ public class PhotoInteractorImpl implements PhotoInteractor {
 
         JsonPlaceholderApiComponent jsonPlaceholderApiComponent = DaggerJsonPlaceholderApiComponent.builder()
                 .jsonPlaceholderApiModule(new JsonPlaceholderApiModule((JsonPlaceholderApiActivity) jsonPlaceholderApiView))
-                .appComponent(MyApp.get((JsonPlaceholderApiActivity)jsonPlaceholderApiView).getAppComponent())
+                .appComponent(BaseApp.get((JsonPlaceholderApiActivity)jsonPlaceholderApiView).getAppComponent())
                 .build();
         jsonPlaceholderApiComponent.inject(this);
     }

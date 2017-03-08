@@ -1,11 +1,11 @@
 package com.example.adrian.mymvpexample.apteligent.view;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.example.adrian.mymvpexample.R;
+import com.example.adrian.mymvpexample.app.base.BaseActivity;
 
-public class ApteligentActivity extends AppCompatActivity {
+public class ApteligentActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

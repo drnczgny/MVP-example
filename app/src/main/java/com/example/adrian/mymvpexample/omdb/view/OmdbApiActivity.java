@@ -1,13 +1,13 @@
 package com.example.adrian.mymvpexample.omdb.view;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Button;
 
 import com.example.adrian.mymvpexample.R;
-import com.example.adrian.mymvpexample.app.MyApp;
+import com.example.adrian.mymvpexample.app.BaseApp;
+import com.example.adrian.mymvpexample.app.base.BaseActivity;
 import com.example.adrian.mymvpexample.omdb.di.DaggerOmdbComponent;
 import com.example.adrian.mymvpexample.omdb.di.OmdbComponent;
 import com.example.adrian.mymvpexample.omdb.di.OmdbModule;
@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
+public class OmdbApiActivity extends BaseActivity implements OmdbApiView {
 
     private static final String TAG = OmdbApiActivity.class.getName();
 
@@ -51,7 +51,7 @@ public class OmdbApiActivity extends AppCompatActivity implements OmdbApiView {
 
         OmdbComponent omdbComponent = DaggerOmdbComponent.builder()
                 .omdbModule(new OmdbModule(this))
-                .appComponent(MyApp.get(this).getAppComponent())
+                .appComponent(BaseApp.get(this).getAppComponent())
                 .build();
         omdbComponent.inject(this);
 

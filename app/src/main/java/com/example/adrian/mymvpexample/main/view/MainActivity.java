@@ -5,14 +5,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.adrian.mymvpexample.R;
-import com.example.adrian.mymvpexample.app.MyApp;
+import com.example.adrian.mymvpexample.app.BaseApp;
+import com.example.adrian.mymvpexample.app.base.BaseActivity;
 import com.example.adrian.mymvpexample.apteligent.view.ApteligentActivity;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 import com.example.adrian.mymvpexample.main.di.DaggerMainComponent;
@@ -26,7 +26,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements MainView {
+public class MainActivity extends BaseActivity implements MainView {
 
     private static final String TAG = MainActivity.class.getName().toString();
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         MainComponent mainComponent = DaggerMainComponent.builder()
                 .mainModule(new MainModule(this))
-                .appComponent(MyApp.get(this).getAppComponent())
+                .appComponent(BaseApp.get(this).getAppComponent())
                 .build();
         mainComponent.inject(this);
 

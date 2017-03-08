@@ -60,11 +60,11 @@ public class OmdbApiFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-//        ((MyApp) getActivity().getApplication()).getAppComponent().inject(this);
+//        ((BaseApp) getActivity().getApplication()).getAppComponent().inject(this);
 
 //        DaggerOmdbComponent.builder()
 //                .omdbModule(new OmdbModule(this))
-//                .appComponent(MyApp.get(this).getAppComponent())
+//                .appComponent(BaseApp.get(this).getAppComponent())
 //                .build();
 
 //        omdbPresenter = new OmdbPresenterImpl(this, omdbApiService);

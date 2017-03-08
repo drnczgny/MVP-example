@@ -3,14 +3,14 @@ package com.example.adrian.mymvpexample.login.view;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.example.adrian.mymvpexample.R;
-import com.example.adrian.mymvpexample.app.MyApp;
+import com.example.adrian.mymvpexample.app.BaseApp;
+import com.example.adrian.mymvpexample.app.base.BaseActivity;
 import com.example.adrian.mymvpexample.login.di.DaggerLoginComponent;
 import com.example.adrian.mymvpexample.login.di.LoginComponent;
 import com.example.adrian.mymvpexample.login.di.LoginModule;
@@ -23,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity implements LoginView {
+public class LoginActivity extends BaseActivity implements LoginView {
 
     private static final String TAG = LoginActivity.class.getName().toString();
 
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         LoginComponent loginComponent = DaggerLoginComponent.builder()
                 .loginModule(new LoginModule(this))
-                .appComponent(MyApp.get(this).getAppComponent())
+                .appComponent(BaseApp.get(this).getAppComponent())
                 .build();
         loginComponent.inject(this);
 
