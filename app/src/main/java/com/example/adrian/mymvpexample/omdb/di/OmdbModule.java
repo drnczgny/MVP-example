@@ -8,6 +8,8 @@ import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiActivity;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiView;
 
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -33,7 +35,7 @@ public class OmdbModule {
 
     @Provides
     @OmdbScope
-    public OmdbApiService provideOmdbService(Retrofit retrofit) {
+    public OmdbApiService provideOmdbService(@Named("omdbapi") Retrofit retrofit) {
         OmdbApiService omdbApiService = retrofit.create(OmdbApiService.class);
         return omdbApiService;
     }

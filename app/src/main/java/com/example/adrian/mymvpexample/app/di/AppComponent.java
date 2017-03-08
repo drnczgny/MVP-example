@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 
 import com.example.adrian.mymvpexample.app.MyApp;
 
+import javax.inject.Named;
+
 import dagger.Component;
 import retrofit2.Retrofit;
 
@@ -17,12 +19,10 @@ public interface AppComponent {
 
     SharedPreferences sharedPreferences();
 
-    Retrofit retrofit();
+    @Named("omdbapi") Retrofit retrofit();
+
+    @Named("jsonplaceholderapi") Retrofit retrofitFor();
 
     void inject(MyApp myApp);
-
-//    void inject(LoginActivity loginActivity);
-//
-//    void inject(MainActivity mainActivity);
 
 }

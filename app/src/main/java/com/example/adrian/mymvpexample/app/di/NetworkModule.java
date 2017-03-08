@@ -2,6 +2,8 @@ package com.example.adrian.mymvpexample.app.di;
 
 import java.io.IOException;
 
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Interceptor;
@@ -34,9 +36,23 @@ public class NetworkModule {
 
     @AppScope
     @Provides
-    public Retrofit provideRetrofit(OkHttpClient client) {
+    @Named("omdbapi")
+    public Retrofit provideRetrofitForOmdbApi(OkHttpClient client) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://www.omdbapi.com/")
+//            .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .client(client)
+                .build();
+        return retrofit;
+    }
+
+    @AppScope
+    @Provides
+    @Named("jsonplaceholderapi")
+    public Retrofit provideRetrofitForJsonPlaceholderApi(OkHttpClient client) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://jsonplaceholder.typicode.com")
 //            .addConverterFactory(GsonConverterFactory.create(gson))
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .client(client)

@@ -9,6 +9,7 @@
     <!-- Navigation Drawer menu labels -->
     <string name="nav_home">Home</string>
     <string name="nav_ombdapi">OMDB API</string>
+    <string name="nav_jsonplaceholder">Json Placeholder API</string>
     <string name="nav_apteligent">Apteligent</string>
     <string name="nav_movies">Movies</string>
     <string name="nav_notifications">Notifications</string>

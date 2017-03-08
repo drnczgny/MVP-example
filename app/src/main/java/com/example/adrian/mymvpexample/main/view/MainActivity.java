@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.adrian.mymvpexample.R;
 import com.example.adrian.mymvpexample.app.MyApp;
 import com.example.adrian.mymvpexample.apteligent.view.ApteligentActivity;
+import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 import com.example.adrian.mymvpexample.main.di.DaggerMainComponent;
 import com.example.adrian.mymvpexample.main.di.MainComponent;
 import com.example.adrian.mymvpexample.main.di.MainModule;
@@ -80,6 +81,17 @@ public class MainActivity extends AppCompatActivity implements MainView {
                     case R.id.nav_home:
                         navItemIndex = 0;
                         break;
+<<<<<<< Updated upstream
+=======
+                    case R.id.nav_ombdapi:
+                        startActivity(new Intent(MainActivity.this, OmdbApiActivity.class));
+                        drawerLayout.closeDrawers();
+                        return true;
+                    case R.id.nav_jsonplaceholder:
+                        startActivity(new Intent(MainActivity.this, JsonPlaceholderApiActivity.class));
+                        drawerLayout.closeDrawers();
+                        return true;
+>>>>>>> Stashed changes
                     case R.id.nav_apteligent:
                         startActivity(new Intent(MainActivity.this, ApteligentActivity.class));
                         drawerLayout.closeDrawers();
@@ -89,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
                         drawerLayout.closeDrawers();
                         return true;
                     case R.id.nav_movies:
-                        navItemIndex = 3;
+                        navItemIndex = 4;
                         break;
                     default:
                         navItemIndex = 0;
