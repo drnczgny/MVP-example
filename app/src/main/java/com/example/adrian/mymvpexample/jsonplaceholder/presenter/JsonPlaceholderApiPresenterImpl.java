@@ -43,18 +43,40 @@ public class JsonPlaceholderApiPresenterImpl implements JsonPlaceholderApiPresen
 
         JsonPlaceholderApiComponent.Injector.buildComponent((JsonPlaceholderApiActivity) jsonPlaceholderApiView).inject(this);
 
+    }
+
+    @Override
+    public void onClickBtnFindAllPost() {
         postInteractor.findAllPost();
+    }
+
+    @Override
+    public void onClickBtnPostById() {
         postInteractor.findPostById(1);
+    }
 
+    @Override
+    public void onClickBtnFindAllComment() {
         commentInteractor.findAllComment();
+    }
 
+    @Override
+    public void onClickBtnFindAllAlbum() {
         albumInteractor.findAllAlbum();
+    }
 
+    @Override
+    public void onClickBtnFindAllPhoto() {
         photoInteractor.findAllPhoto();
+    }
 
+    @Override
+    public void onClickBtnFindAllTodo() {
         todoInteractor.findAllTodo();
+    }
 
+    @Override
+    public void onClickBtnFindAllUser() {
         userInteractor.findAllUser();
-
     }
 }

@@ -6,4 +6,7 @@ package com.example.adrian.mymvpexample.jsonplaceholder.view;
 
 public interface JsonPlaceholderApiView {
 
+
+
+
 }

@@ -6,4 +6,17 @@ package com.example.adrian.mymvpexample.jsonplaceholder.presenter;
 
 public interface JsonPlaceholderApiPresenter {
 
+    public void onClickBtnFindAllPost();
+
+    public void onClickBtnPostById();
+
+    public void onClickBtnFindAllComment();
+
+    public void onClickBtnFindAllAlbum();
+
+    public void onClickBtnFindAllPhoto();
+
+    public void onClickBtnFindAllTodo();
+
+    public void onClickBtnFindAllUser();
 }

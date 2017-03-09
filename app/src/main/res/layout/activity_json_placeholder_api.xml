@@ -9,6 +9,56 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="jsonplaceholder api"/>
+        android:layout_margin="10dp"
+        android:text="JsonPlaceholder Api" />
+
+    <Button
+        android:id="@+id/btnFindAllPost"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="btnFindAllPost" />
+
+    <Button
+        android:id="@+id/btnPostById"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="btnPostByIdPost" />
+
+    <Button
+        android:id="@+id/btnFindAllComment"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="btnFindAllComment" />
+
+    <Button
+        android:id="@+id/btnFindAllAlbum"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="btnFindAllAlbum" />
+
+    <Button
+        android:id="@+id/btnFindAllPhoto"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="btnFindAllPhoto" />
+
+    <Button
+        android:id="@+id/btnFindAllTodo"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="btnFindAllTodo" />
+
+    <Button
+        android:id="@+id/btnFindAllUser"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="btnFindAllUser" />
 
 </LinearLayout>
