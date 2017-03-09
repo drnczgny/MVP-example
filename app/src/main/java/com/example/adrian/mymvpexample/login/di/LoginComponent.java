@@ -15,4 +15,17 @@ public interface LoginComponent {
 
     void inject(LoginActivity loginActivity);
 
+    final class Injector {
+        private Injector() {
+        }
+
+        public static LoginComponent buildComponent(LoginActivity activity) {
+            return DaggerLoginComponent.builder()
+                    .appComponent(AppComponent.Injector.getComponent())
+                    .loginModule(new LoginModule(activity))
+                    .build();
+        }
+    }
+
+
 }

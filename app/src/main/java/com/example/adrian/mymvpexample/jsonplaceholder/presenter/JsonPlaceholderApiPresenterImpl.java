@@ -1,9 +1,6 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.presenter;
 
-import com.example.adrian.mymvpexample.app.BaseApp;
-import com.example.adrian.mymvpexample.jsonplaceholder.di.DaggerJsonPlaceholderApiComponent;
 import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
-import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiModule;
 import com.example.adrian.mymvpexample.jsonplaceholder.interactor.AlbumInteractor;
 import com.example.adrian.mymvpexample.jsonplaceholder.interactor.CommentInteractor;
 import com.example.adrian.mymvpexample.jsonplaceholder.interactor.PhotoInteractor;
@@ -44,25 +41,20 @@ public class JsonPlaceholderApiPresenterImpl implements JsonPlaceholderApiPresen
     public JsonPlaceholderApiPresenterImpl(JsonPlaceholderApiView jsonPlaceholderApiView) {
         this.jsonPlaceholderApiView = jsonPlaceholderApiView;
 
-        JsonPlaceholderApiComponent jsonPlaceholderApiComponent = DaggerJsonPlaceholderApiComponent.builder()
-                .jsonPlaceholderApiModule(new JsonPlaceholderApiModule((JsonPlaceholderApiActivity) jsonPlaceholderApiView))
-                .appComponent(BaseApp.get((JsonPlaceholderApiActivity)jsonPlaceholderApiView).getAppComponent())
-                .build();
-        jsonPlaceholderApiComponent.inject(this);
+        JsonPlaceholderApiComponent.Injector.buildComponent((JsonPlaceholderApiActivity) jsonPlaceholderApiView).inject(this);
 
-//        postInteractor.findAllPost();
-//        postInteractor.findPostById(1);
+        postInteractor.findAllPost();
+        postInteractor.findPostById(1);
 
-//        commentInteractor.findAllComment();
+        commentInteractor.findAllComment();
 
-//        albumInteractor.findAllAlbum();
+        albumInteractor.findAllAlbum();
 
-//        photoInteractor.findAllPhoto();
+        photoInteractor.findAllPhoto();
 
-//        todoInteractor.findAllTodo();
+        todoInteractor.findAllTodo();
 
         userInteractor.findAllUser();
-
 
     }
 }

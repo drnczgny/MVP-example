@@ -36,4 +36,16 @@ public interface JsonPlaceholderApiComponent {
 
     void inject(UserInteractorImpl userInteractorImpl);
 
+    final class Injector {
+        private Injector() {
+        }
+
+        public static JsonPlaceholderApiComponent buildComponent(JsonPlaceholderApiActivity activity) {
+            return DaggerJsonPlaceholderApiComponent.builder()
+                    .appComponent(AppComponent.Injector.getComponent())
+                    .jsonPlaceholderApiModule(new JsonPlaceholderApiModule(activity))
+                    .build();
+        }
+    }
+
 }

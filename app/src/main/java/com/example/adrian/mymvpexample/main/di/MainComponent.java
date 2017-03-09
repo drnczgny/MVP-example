@@ -15,4 +15,16 @@ public interface MainComponent {
 
     void inject(MainActivity mainActivity);
 
+    final class Injector {
+        private Injector() {
+        }
+
+        public static MainComponent buildComponent(MainActivity activity) {
+            return DaggerMainComponent.builder()
+                    .appComponent(AppComponent.Injector.getComponent())
+                    .mainModule(new MainModule(activity))
+                    .build();
+        }
+    }
+
 }

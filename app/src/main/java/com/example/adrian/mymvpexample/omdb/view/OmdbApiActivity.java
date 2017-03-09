@@ -6,11 +6,8 @@ import android.util.Log;
 import android.widget.Button;
 
 import com.example.adrian.mymvpexample.R;
-import com.example.adrian.mymvpexample.app.BaseApp;
-import com.example.adrian.mymvpexample.app.base.BaseActivity;
-import com.example.adrian.mymvpexample.omdb.di.DaggerOmdbComponent;
+import com.example.adrian.mymvpexample.base.BaseActivity;
 import com.example.adrian.mymvpexample.omdb.di.OmdbComponent;
-import com.example.adrian.mymvpexample.omdb.di.OmdbModule;
 import com.example.adrian.mymvpexample.omdb.presenter.OmdbPresenter;
 import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 
@@ -48,12 +45,7 @@ public class OmdbApiActivity extends BaseActivity implements OmdbApiView {
         setContentView(R.layout.activity_omdb_api);
 
         ButterKnife.bind(this);
-
-        OmdbComponent omdbComponent = DaggerOmdbComponent.builder()
-                .omdbModule(new OmdbModule(this))
-                .appComponent(BaseApp.get(this).getAppComponent())
-                .build();
-        omdbComponent.inject(this);
+        OmdbComponent.Injector.buildComponent(this).inject(this);
 
         omdbApiService.toString();
     }

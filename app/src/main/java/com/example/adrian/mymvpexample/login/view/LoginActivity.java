@@ -9,11 +9,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.example.adrian.mymvpexample.R;
-import com.example.adrian.mymvpexample.app.BaseApp;
-import com.example.adrian.mymvpexample.app.base.BaseActivity;
-import com.example.adrian.mymvpexample.login.di.DaggerLoginComponent;
+import com.example.adrian.mymvpexample.base.BaseActivity;
 import com.example.adrian.mymvpexample.login.di.LoginComponent;
-import com.example.adrian.mymvpexample.login.di.LoginModule;
 import com.example.adrian.mymvpexample.login.presenter.LoginPresenter;
 import com.example.adrian.mymvpexample.main.view.MainActivity;
 
@@ -29,10 +26,13 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @BindView(R.id.etUsername)
     EditText etUsername;
+
     @BindView(R.id.etPassword)
     EditText etPassword;
+
     @BindView(R.id.btnLogIn)
     Button btnLogIn;
+
     @BindView(R.id.progress)
     ProgressBar progressBar;
 
@@ -46,13 +46,9 @@ public class LoginActivity extends BaseActivity implements LoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
 
-        LoginComponent loginComponent = DaggerLoginComponent.builder()
-                .loginModule(new LoginModule(this))
-                .appComponent(BaseApp.get(this).getAppComponent())
-                .build();
-        loginComponent.inject(this);
+        ButterKnife.bind(this);
+        LoginComponent.Injector.buildComponent(this).inject(this);
 
     }
 

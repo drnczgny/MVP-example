@@ -2,10 +2,7 @@ package com.example.adrian.mymvpexample.omdb.presenter;
 
 import android.util.Log;
 
-import com.example.adrian.mymvpexample.app.BaseApp;
-import com.example.adrian.mymvpexample.omdb.di.DaggerOmdbComponent;
 import com.example.adrian.mymvpexample.omdb.di.OmdbComponent;
-import com.example.adrian.mymvpexample.omdb.di.OmdbModule;
 import com.example.adrian.mymvpexample.omdb.service.OmdbApiService;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiActivity;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiView;
@@ -35,11 +32,7 @@ public class OmdbInteractorImpl implements OmdbInteractor {
     public OmdbInteractorImpl(OmdbApiView omdbApiView) {
         this.omdbApiView = omdbApiView;
 
-        OmdbComponent omdbComponent = DaggerOmdbComponent.builder()
-                .omdbModule(new OmdbModule(this))
-                .appComponent(BaseApp.get((OmdbApiActivity)omdbApiView).getAppComponent())
-                .build();
-        omdbComponent.inject(this);
+        OmdbComponent.Injector.buildComponent((OmdbApiActivity) omdbApiView).inject(this);
 
         omdbApiService.toString();
     }

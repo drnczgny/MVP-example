@@ -2,7 +2,7 @@ package com.example.adrian.mymvpexample.app.di;
 
 import android.content.SharedPreferences;
 
-import com.example.adrian.mymvpexample.app.BaseApp;
+import com.example.adrian.mymvpexample.app.MyApp;
 
 import javax.inject.Named;
 
@@ -17,12 +17,29 @@ import retrofit2.Retrofit;
 @Component(modules = {AppModule.class, NetworkModule.class})
 public interface AppComponent {
 
+    void inject(MyApp myApp);
+
     SharedPreferences sharedPreferences();
 
     @Named("omdbapi") Retrofit retrofitForOmbdApi();
 
     @Named("jsonplaceholderapi") Retrofit retrofitForJsonPlaceholderApi();
 
-    void inject(BaseApp myApp);
+    final class Injector {
+        private static AppComponent appComponent;
 
+        private Injector() {
+        }
+
+        public static void inject(MyApp myApp) {
+            appComponent = DaggerAppComponent.builder()
+                    .appModule(new AppModule(myApp))
+                    .build();
+            appComponent.inject(myApp);
+        }
+
+        public static AppComponent getComponent() {
+            return appComponent;
+        }
+    }
 }

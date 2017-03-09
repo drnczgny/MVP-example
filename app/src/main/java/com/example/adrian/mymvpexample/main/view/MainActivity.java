@@ -11,13 +11,10 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.adrian.mymvpexample.R;
-import com.example.adrian.mymvpexample.app.BaseApp;
-import com.example.adrian.mymvpexample.app.base.BaseActivity;
 import com.example.adrian.mymvpexample.apteligent.view.ApteligentActivity;
+import com.example.adrian.mymvpexample.base.BaseActivity;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
-import com.example.adrian.mymvpexample.main.di.DaggerMainComponent;
 import com.example.adrian.mymvpexample.main.di.MainComponent;
-import com.example.adrian.mymvpexample.main.di.MainModule;
 import com.example.adrian.mymvpexample.main.presenter.MainPresenter;
 import com.example.adrian.mymvpexample.omdb.view.OmdbApiActivity;
 
@@ -54,14 +51,9 @@ public class MainActivity extends BaseActivity implements MainView {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        MainComponent.Injector.buildComponent(this).inject(this);
 
         setSupportActionBar(toolbar);
-
-        MainComponent mainComponent = DaggerMainComponent.builder()
-                .mainModule(new MainModule(this))
-                .appComponent(BaseApp.get(this).getAppComponent())
-                .build();
-        mainComponent.inject(this);
 
         mainPresenter.setUpNavDrawer();
     }

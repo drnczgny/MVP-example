@@ -3,7 +3,7 @@ package com.example.adrian.mymvpexample.apteligent.view;
 import android.os.Bundle;
 
 import com.example.adrian.mymvpexample.R;
-import com.example.adrian.mymvpexample.app.base.BaseActivity;
+import com.example.adrian.mymvpexample.base.BaseActivity;
 
 public class ApteligentActivity extends BaseActivity {
 

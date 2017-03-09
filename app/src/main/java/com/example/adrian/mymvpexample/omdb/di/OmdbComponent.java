@@ -24,4 +24,16 @@ public interface OmdbComponent {
 
     void inject(OmdbPresenterImpl omdbPresenterImpl);
 
+    final class Injector {
+        private Injector() {
+        }
+
+        public static OmdbComponent buildComponent(OmdbApiActivity activity) {
+            return DaggerOmdbComponent.builder()
+                    .appComponent(AppComponent.Injector.getComponent())
+                    .omdbModule(new OmdbModule(activity))
+                    .build();
+        }
+    }
+
 }
