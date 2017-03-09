@@ -11,10 +11,7 @@ import com.example.adrian.mymvpexample.app.di.AppComponent;
 
 public class MyApp extends Application {
 
-    AppComponent appComponent;
-
     private static volatile MyApp application;
-
 
     public static MyApp get(Activity activity) {
         return (MyApp) activity.getApplication();
@@ -26,14 +23,7 @@ public class MyApp extends Application {
 
         AppComponent.Injector.inject(this);
 
-        //        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
-        //        appComponent.inject(this);
-
     }
-
-//    public AppComponent getAppComponent() {
-//        return appComponent;
-//    }
 
     public static MyApp getApplication() {
         return application;
