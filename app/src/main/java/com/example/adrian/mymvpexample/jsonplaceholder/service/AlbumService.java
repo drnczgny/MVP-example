@@ -1,5 +1,9 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.service;
 
+import com.example.adrian.mymvpexample.jsonplaceholder.model.Album;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -10,6 +14,6 @@ import retrofit2.http.GET;
 public interface AlbumService {
 
     @GET("/albums")
-    Call<String> findAllAlbum();
+    Call<List<Album>> findAllAlbum();
 
 }

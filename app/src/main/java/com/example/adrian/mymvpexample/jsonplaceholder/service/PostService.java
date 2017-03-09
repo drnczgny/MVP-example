@@ -1,5 +1,9 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.service;
 
+import com.example.adrian.mymvpexample.jsonplaceholder.model.Post;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -11,9 +15,9 @@ import retrofit2.http.Path;
 public interface PostService {
 
     @GET("/posts")
-    Call<String> findAllPost();
+    Call<List<Post>> findAllPost();
 
     @GET("/posts/{id}")
-    Call<String> findPostById(@Path("id") int id);
+    Call<Post> findPostById(@Path("id") int id);
 
 }

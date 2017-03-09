@@ -1,5 +1,9 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.service;
 
+import com.example.adrian.mymvpexample.jsonplaceholder.model.Todo;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -10,6 +14,6 @@ import retrofit2.http.GET;
 public interface TodoService {
 
     @GET("/todos")
-    Call<String> findAllTodo();
+    Call<List<Todo>> findAllTodo();
 
 }

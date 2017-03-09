@@ -17,7 +17,7 @@ import dagger.Component;
  */
 
 @JsonPlaceholderScope
-@Component(dependencies = AppComponent.class, modules = {JsonPlaceholderApiModule.class})
+@Component(dependencies = AppComponent.class, modules = {JsonPlaceholderApiBaseModule.class, JsonPlaceholderServiceModule.class})
 public interface JsonPlaceholderApiComponent {
 
     void inject(JsonPlaceholderApiActivity jsonPlaceholderApiActivity);
@@ -43,7 +43,7 @@ public interface JsonPlaceholderApiComponent {
         public static JsonPlaceholderApiComponent buildComponent(JsonPlaceholderApiActivity activity) {
             return DaggerJsonPlaceholderApiComponent.builder()
                     .appComponent(AppComponent.Injector.getComponent())
-                    .jsonPlaceholderApiModule(new JsonPlaceholderApiModule(activity))
+                    .jsonPlaceholderApiBaseModule(new JsonPlaceholderApiBaseModule(activity))
                     .build();
         }
     }

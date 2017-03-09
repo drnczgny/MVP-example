@@ -3,9 +3,12 @@ package com.example.adrian.mymvpexample.jsonplaceholder.interactor;
 import android.util.Log;
 
 import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
+import com.example.adrian.mymvpexample.jsonplaceholder.model.Photo;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.PhotoService;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -35,21 +38,21 @@ public class PhotoInteractorImpl implements PhotoInteractor {
 
     @Override
     public void findAllPhoto() {
-        Call<String> call = photoService.findAllPhoto();
+        Call<List<Photo>> call = photoService.findAllPhoto();
 
         Log.i(TAG, call.request().url().toString());
 
-        call.enqueue(new Callback<String>() {
+        call.enqueue(new Callback<List<Photo>>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
                 Log.i(TAG, "onResponse");
                 int statusCode = response.code();
-                String simpleString = response.body();
-                Log.i(TAG, simpleString);
+                List<Photo> photos = response.body();
+                Log.i(TAG, photos.toString());
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<List<Photo>> call, Throwable t) {
                 Log.i(TAG, "onFailure");
                 System.out.println(t.getMessage());
             }

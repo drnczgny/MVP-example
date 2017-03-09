@@ -1,5 +1,8 @@
 package com.example.adrian.mymvpexample.app.di;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 
 import javax.inject.Named;
@@ -11,6 +14,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
@@ -19,6 +23,15 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 @Module
 public class NetworkModule {
+
+    @AppScope
+    @Provides
+    public Gson provideGson() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        return gson;
+    }
 
     @AppScope
     @Provides
@@ -50,11 +63,11 @@ public class NetworkModule {
     @AppScope
     @Provides
     @Named("jsonplaceholderapi")
-    public Retrofit provideRetrofitForJsonPlaceholderApi(OkHttpClient client) {
+    public Retrofit provideRetrofitForJsonPlaceholderApi(Gson gson, OkHttpClient client) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://jsonplaceholder.typicode.com")
-//            .addConverterFactory(GsonConverterFactory.create(gson))
-                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+//                .addConverterFactory(ScalarsConverterFactory.create())
                 .client(client)
                 .build();
         return retrofit;

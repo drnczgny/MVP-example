@@ -3,9 +3,12 @@ package com.example.adrian.mymvpexample.jsonplaceholder.interactor;
 import android.util.Log;
 
 import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
+import com.example.adrian.mymvpexample.jsonplaceholder.model.Comment;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.CommentService;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -35,21 +38,21 @@ public class CommentInteractorImpl implements CommentInteractor {
 
     @Override
     public void findAllComment() {
-        Call<String> call = commentService.findAllComment();
+        Call<List<Comment>> call = commentService.findAllComment();
 
         Log.i(TAG, call.request().url().toString());
 
-        call.enqueue(new Callback<String>() {
+        call.enqueue(new Callback<List<Comment>>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
                 Log.i(TAG, "onResponse");
                 int statusCode = response.code();
-                String simpleString = response.body();
-                Log.i(TAG, simpleString);
+                List<Comment> comments = response.body();
+                Log.i(TAG, comments.toString());
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<List<Comment>> call, Throwable t) {
                 Log.i(TAG, "onFailure");
                 System.out.println(t.getMessage());
             }

@@ -3,9 +3,12 @@ package com.example.adrian.mymvpexample.jsonplaceholder.interactor;
 import android.util.Log;
 
 import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
+import com.example.adrian.mymvpexample.jsonplaceholder.model.Album;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.AlbumService;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -35,21 +38,21 @@ public class AlbumInteractorImpl implements AlbumInteractor {
 
     @Override
     public void findAllAlbum() {
-        Call<String> call = albumService.findAllAlbum();
+        Call<List<Album>> call = albumService.findAllAlbum();
 
         Log.i(TAG, call.request().url().toString());
 
-        call.enqueue(new Callback<String>() {
+        call.enqueue(new Callback<List<Album>>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
                 Log.i(TAG, "onResponse");
                 int statusCode = response.code();
-                String simpleString = response.body();
-                Log.i(TAG, simpleString);
+                List<Album> albums = response.body();
+                Log.i(TAG, albums.toString());
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<List<Album>> call, Throwable t) {
                 Log.i(TAG, "onFailure");
                 System.out.println(t.getMessage());
             }
