@@ -19,9 +19,9 @@ public interface AppComponent {
 
     SharedPreferences sharedPreferences();
 
-    @Named("omdbapi") Retrofit retrofit();
+    @Named("omdbapi") Retrofit retrofitForOmbdApi();
 
-    @Named("jsonplaceholderapi") Retrofit retrofitFor();
+    @Named("jsonplaceholderapi") Retrofit retrofitForJsonPlaceholderApi();
 
     void inject(BaseApp myApp);
 
