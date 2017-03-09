@@ -12,9 +12,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Adrian_Czigany on 3/8/2017.
@@ -24,7 +24,10 @@ public class PostInteractorImpl implements PostInteractor {
 
     private static final String TAG = PostInteractorImpl.class.getName();
 
-    JsonPlaceholderApiView jsonPlaceholderApiView;
+    private JsonPlaceholderApiView jsonPlaceholderApiView;
+
+    private Observer<List<Post>> postListObserver;
+    private Observer<Post> postObserver;
 
     @Inject
     PostService postService;
@@ -34,52 +37,70 @@ public class PostInteractorImpl implements PostInteractor {
 
         JsonPlaceholderApiComponent.Injector.buildComponent((JsonPlaceholderApiActivity) jsonPlaceholderApiView).inject(this);
 
+        createPostListObserver();
+        createPostObserver();
+    }
+
+    private void createPostListObserver() {
+        Log.i(TAG, "createPostListObserver ...");
+
+        postListObserver = new Observer<List<Post>>() {
+            @Override
+            public void onCompleted() {
+                Log.i(TAG, "onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.i(TAG, "onError");
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onNext(List<Post> posts) {
+                Log.i(TAG, "onNext");
+                Log.i(TAG, posts.toString());
+            }
+        };
+    }
+
+    private void createPostObserver() {
+        Log.i(TAG, "createPostObserver ...");
+
+        postObserver = new Observer<Post>() {
+            @Override
+            public void onCompleted() {
+                Log.i(TAG, "onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.i(TAG, "onError");
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onNext(Post post) {
+                Log.i(TAG, "onNext");
+                Log.i(TAG, post.toString());
+            }
+        };
     }
 
     @Override
     public void findAllPost() {
-        Call<List<Post>> call = postService.findAllPost();
-
-        Log.i(TAG, call.request().url().toString());
-
-        call.enqueue(new Callback<List<Post>>() {
-            @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                Log.i(TAG, "onResponse");
-                int statusCode = response.code();
-                List<Post> posts = response.body();
-                Log.i(TAG, posts.toString());
-            }
-
-            @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
-                Log.i(TAG, "onFailure");
-                System.out.println(t.getMessage());
-            }
-        });
+        postService.findAllPost()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(postListObserver);
     }
 
     @Override
     public void findPostById(final int id) {
-        Call<Post> call = postService.findPostById(id);
-
-        Log.i(TAG, call.request().url().toString());
-
-        call.enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                Log.i(TAG, "onResponse");
-                int statusCode = response.code();
-                Post post = response.body();
-                Log.i(TAG, post.toString());
-            }
-
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                Log.i(TAG, "onFailure");
-                System.out.println(t.getMessage());
-            }
-        });
+        postService.findPostById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(postObserver);
     }
 
 }

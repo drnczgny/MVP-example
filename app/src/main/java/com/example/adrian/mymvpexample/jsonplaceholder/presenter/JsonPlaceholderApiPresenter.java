@@ -8,7 +8,7 @@ public interface JsonPlaceholderApiPresenter {
 
     public void onClickBtnFindAllPost();
 
-    public void onClickBtnPostById();
+    public void onClickBtnPostById(final int id);
 
     public void onClickBtnFindAllComment();
 

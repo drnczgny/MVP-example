@@ -57,7 +57,7 @@ public class JsonPlaceholderApiActivity extends BaseActivity implements JsonPlac
 
     @OnClick(R.id.btnPostById)
     public void onClickBtnPostById() {
-        jsonPlaceholderApiPresenterImpl.onClickBtnPostById();
+        jsonPlaceholderApiPresenterImpl.onClickBtnPostById(1);
     }
 
     @OnClick(R.id.btnFindAllComment)

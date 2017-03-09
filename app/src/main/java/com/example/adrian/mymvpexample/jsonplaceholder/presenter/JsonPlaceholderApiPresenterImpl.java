@@ -51,8 +51,8 @@ public class JsonPlaceholderApiPresenterImpl implements JsonPlaceholderApiPresen
     }
 
     @Override
-    public void onClickBtnPostById() {
-        postInteractor.findPostById(1);
+    public void onClickBtnPostById(final int id) {
+        postInteractor.findPostById(id);
     }
 
     @Override
