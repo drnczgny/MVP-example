@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.example.adrian.mymvpexample.jsonplaceholder.model.Todo;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.TodoService;
-import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
 
 import java.util.List;
 
@@ -19,8 +18,6 @@ import retrofit2.Response;
 public class TodoInteractorImpl implements TodoInteractor {
 
     private static final String TAG = TodoInteractorImpl.class.getName();
-
-    private JsonPlaceholderApiView jsonPlaceholderApiView;
 
     private TodoService todoService;
 

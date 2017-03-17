@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.example.adrian.mymvpexample.jsonplaceholder.model.User;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.UserService;
-import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
 
 import java.util.List;
 
@@ -20,23 +19,11 @@ public class UserInteractorImpl implements UserInteractor {
 
     private static final String TAG = UserInteractorImpl.class.getName();
 
-    private JsonPlaceholderApiView jsonPlaceholderApiView;
-
     private UserService userService;
 
     public UserInteractorImpl(final UserService userService) {
         this.userService = userService;
     }
-
-//    private UserService userService;
-//
-//    public UserInteractorImpl(JsonPlaceholderApiView jsonPlaceholderApiView, UserService userService) {
-//        this.jsonPlaceholderApiView = jsonPlaceholderApiView;
-//        this.userService = userService;
-//
-//        JsonPlaceholderApiComponent.Injector.buildComponent((JsonPlaceholderApiActivity) jsonPlaceholderApiView).inject(this);
-//
-//    }
 
     @Override
     public void findAllUser() {
