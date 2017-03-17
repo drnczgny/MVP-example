@@ -2,10 +2,8 @@ package com.example.adrian.mymvpexample.jsonplaceholder.interactor;
 
 import android.util.Log;
 
-import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
 import com.example.adrian.mymvpexample.jsonplaceholder.model.Comment;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.CommentService;
-import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
 
 import java.util.List;
@@ -26,13 +24,11 @@ public class CommentInteractorImpl implements CommentInteractor {
 
     private JsonPlaceholderApiView jsonPlaceholderApiView;
 
-    @Inject
     CommentService commentService;
 
     public CommentInteractorImpl(JsonPlaceholderApiView jsonPlaceholderApiView) {
         this.jsonPlaceholderApiView = jsonPlaceholderApiView;
 
-        JsonPlaceholderApiComponent.Injector.buildComponent((JsonPlaceholderApiActivity) jsonPlaceholderApiView).inject(this);
 
     }
 

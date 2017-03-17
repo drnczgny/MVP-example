@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -25,7 +26,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 @Module
 public class NetworkModule {
 
-    @AppScope
+    @Singleton
     @Provides
     public Gson provideGson() {
         Gson gson = new GsonBuilder()
@@ -34,7 +35,7 @@ public class NetworkModule {
         return gson;
     }
 
-    @AppScope
+    @Singleton
     @Provides
     public OkHttpClient providesOkHttpClient() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -48,7 +49,7 @@ public class NetworkModule {
         return client;
     }
 
-    @AppScope
+    @Singleton
     @Provides
     @Named("omdbapi")
     public Retrofit provideRetrofitForOmdbApi(OkHttpClient client) {
@@ -60,7 +61,7 @@ public class NetworkModule {
         return retrofit;
     }
 
-    @AppScope
+    @Singleton
     @Provides
     @Named("jsonplaceholderapi")
     public Retrofit provideRetrofitForJsonPlaceholderApi(Gson gson, OkHttpClient client) {

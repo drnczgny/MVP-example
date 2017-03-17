@@ -20,9 +20,7 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         AppComponent.Injector.inject(this);
-
     }
 
     public static MyApp getApplication() {

@@ -24,7 +24,7 @@ import dagger.Provides;
  * Created by Adrian_Czigany on 3/8/2017.
  */
 
-@Module
+@Module(includes = JsonPlaceholderServiceModule.class)
 public class JsonPlaceholderApiBaseModule {
 
     JsonPlaceholderApiActivity jsonPlaceholderApiActivity;
@@ -75,10 +75,17 @@ public class JsonPlaceholderApiBaseModule {
         return new UserInteractorImpl(providesJsonPlaceholderApiView());
     }
 
+//    @JsonPlaceholderScope
+//    @Provides
+//    @Named("withService")
+//    UserInteractor provideUserInteractorWithService(UserService userService) {
+//        return new UserInteractorImpl(providesJsonPlaceholderApiView(), userService);
+//    }
+
     @JsonPlaceholderScope
     @Provides
-    JsonPlaceholderApiPresenter providesJsonPlaceholderApiPresenter() {
-        return new JsonPlaceholderApiPresenterImpl(providesJsonPlaceholderApiView());
+    JsonPlaceholderApiPresenter providesJsonPlaceholderApiPresenter(JsonPlaceholderApiView jsonPlaceholderApiView, PostInteractor postInteractor) {
+        return new JsonPlaceholderApiPresenterImpl(jsonPlaceholderApiView, postInteractor);
     }
 
 }

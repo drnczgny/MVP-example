@@ -16,49 +16,62 @@
         android:id="@+id/btnFindAllPost"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="btnFindAllPost" />
+        android:text="btnFindAllPost"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnPostById"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="btnPostByIdPost" />
+        android:text="btnPostByIdPost"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnFindAllComment"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="btnFindAllComment" />
+        android:text="btnFindAllComment"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnFindAllAlbum"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="btnFindAllAlbum" />
+        android:text="btnFindAllAlbum"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnFindAllPhoto"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="btnFindAllPhoto" />
+        android:text="btnFindAllPhoto"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnFindAllTodo"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="btnFindAllTodo" />
+        android:text="btnFindAllTodo"
+        android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/btnFindAllUser"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="btnFindAllUser" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnFindAllUser"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="btnFindAllUser"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnUsersPage"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="users page"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
 
 </LinearLayout>

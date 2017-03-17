@@ -22,7 +22,8 @@
         <activity android:name=".apteligent.view.ApteligentActivity" />
         <activity android:name=".omdb.view.OmdbApiActivity" />
         <activity android:name=".jsonplaceholder.view.JsonPlaceholderApiActivity" />
-        <activity android:name=".base.BaseActivity"></activity>
+        <activity android:name=".base.BaseActivity" />
+        <activity android:name=".users.view.UsersPageActivity"></activity>
     </application>
 
 </manifest>

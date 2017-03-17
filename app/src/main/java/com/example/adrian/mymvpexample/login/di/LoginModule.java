@@ -31,8 +31,8 @@ public class LoginModule {
 
     @Provides
     @LoginScope
-    LoginPresenter provideLoginPresenter() {
-        return new LoginPresenterImpl(provideLoginView(), provideLoginInteractor());
+    LoginPresenter provideLoginPresenter(LoginView loginView, LoginInteractor provideLoginInteractor) {
+        return new LoginPresenterImpl(loginView, provideLoginInteractor);
     }
 
     @Provides

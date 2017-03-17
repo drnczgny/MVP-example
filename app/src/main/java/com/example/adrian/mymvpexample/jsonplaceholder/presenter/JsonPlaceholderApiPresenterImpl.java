@@ -1,16 +1,7 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.presenter;
 
-import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
-import com.example.adrian.mymvpexample.jsonplaceholder.interactor.AlbumInteractor;
-import com.example.adrian.mymvpexample.jsonplaceholder.interactor.CommentInteractor;
-import com.example.adrian.mymvpexample.jsonplaceholder.interactor.PhotoInteractor;
 import com.example.adrian.mymvpexample.jsonplaceholder.interactor.PostInteractor;
-import com.example.adrian.mymvpexample.jsonplaceholder.interactor.TodoInteractor;
-import com.example.adrian.mymvpexample.jsonplaceholder.interactor.UserInteractor;
-import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
-
-import javax.inject.Inject;
 
 /**
  * Created by Adrian_Czigany on 3/8/2017.
@@ -20,29 +11,30 @@ public class JsonPlaceholderApiPresenterImpl implements JsonPlaceholderApiPresen
 
     private JsonPlaceholderApiView jsonPlaceholderApiView;
 
-    @Inject
-    PostInteractor postInteractor;
 
-    @Inject
-    CommentInteractor commentInteractor;
+    //TODO: Constructor injection.
+    private PostInteractor postInteractor;
 
-    @Inject
-    AlbumInteractor albumInteractor;
 
-    @Inject
-    PhotoInteractor photoInteractor;
+//    CommentInteractor commentInteractor;
+//
+//    @Injectfgh
+//    AlbumInteractor albumInteractor;
+//
+//    @Inject
+//    PhotoInteractor photoInteractor;
+//
+//    @Inject
+//    TodoInteractor todoInteractor;
+//
+//    @Inject
+////    @Named("withService")
+//            UserInteractor userInteractor;
 
-    @Inject
-    TodoInteractor todoInteractor;
-
-    @Inject
-    UserInteractor userInteractor;
-
-    public JsonPlaceholderApiPresenterImpl(JsonPlaceholderApiView jsonPlaceholderApiView) {
+    public JsonPlaceholderApiPresenterImpl(JsonPlaceholderApiView jsonPlaceholderApiView, PostInteractor postInteractor) {
         this.jsonPlaceholderApiView = jsonPlaceholderApiView;
-
-        JsonPlaceholderApiComponent.Injector.buildComponent((JsonPlaceholderApiActivity) jsonPlaceholderApiView).inject(this);
-
+        this.postInteractor = postInteractor;
+        postInteractor.toString();
     }
 
     @Override
@@ -57,26 +49,26 @@ public class JsonPlaceholderApiPresenterImpl implements JsonPlaceholderApiPresen
 
     @Override
     public void onClickBtnFindAllComment() {
-        commentInteractor.findAllComment();
+//        commentInteractor.findAllComment();
     }
 
     @Override
     public void onClickBtnFindAllAlbum() {
-        albumInteractor.findAllAlbum();
+//        albumInteractor.findAllAlbum();
     }
 
     @Override
     public void onClickBtnFindAllPhoto() {
-        photoInteractor.findAllPhoto();
+//        photoInteractor.findAllPhoto();
     }
 
     @Override
     public void onClickBtnFindAllTodo() {
-        todoInteractor.findAllTodo();
+//        todoInteractor.findAllTodo();
     }
 
     @Override
     public void onClickBtnFindAllUser() {
-        userInteractor.findAllUser();
+//        userInteractor.findAllUser();
     }
 }

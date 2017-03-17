@@ -1,5 +1,6 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -7,6 +8,7 @@ import com.example.adrian.mymvpexample.R;
 import com.example.adrian.mymvpexample.base.BaseActivity;
 import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
 import com.example.adrian.mymvpexample.jsonplaceholder.presenter.JsonPlaceholderApiPresenter;
+import com.example.adrian.mymvpexample.users.view.UsersPageActivity;
 
 import javax.inject.Inject;
 
@@ -36,6 +38,9 @@ public class JsonPlaceholderApiActivity extends BaseActivity implements JsonPlac
 
     @BindView(R.id.btnFindAllUser)
     Button btnFindAll;
+
+    @BindView(R.id.btnUsersPage)
+    Button btnUsersPage;
 
     @Inject
     JsonPlaceholderApiPresenter jsonPlaceholderApiPresenterImpl;
@@ -83,6 +88,12 @@ public class JsonPlaceholderApiActivity extends BaseActivity implements JsonPlac
     @OnClick(R.id.btnFindAllUser)
     public void onClickBtnFindAllUser() {
         jsonPlaceholderApiPresenterImpl.onClickBtnFindAllUser();
+    }
+
+    @OnClick(R.id.btnUsersPage)
+    public void onClickBtnUsersPager() {
+        Intent intent = new Intent(JsonPlaceholderApiActivity.this, UsersPageActivity.class);
+        startActivity(intent);
     }
 
 }

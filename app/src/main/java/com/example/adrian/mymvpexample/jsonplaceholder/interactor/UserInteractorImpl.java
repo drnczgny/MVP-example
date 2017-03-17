@@ -2,15 +2,11 @@ package com.example.adrian.mymvpexample.jsonplaceholder.interactor;
 
 import android.util.Log;
 
-import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
 import com.example.adrian.mymvpexample.jsonplaceholder.model.User;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.UserService;
-import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,15 +22,23 @@ public class UserInteractorImpl implements UserInteractor {
 
     private JsonPlaceholderApiView jsonPlaceholderApiView;
 
-    @Inject
     UserService userService;
 
     public UserInteractorImpl(JsonPlaceholderApiView jsonPlaceholderApiView) {
         this.jsonPlaceholderApiView = jsonPlaceholderApiView;
 
-        JsonPlaceholderApiComponent.Injector.buildComponent((JsonPlaceholderApiActivity) jsonPlaceholderApiView).inject(this);
 
     }
+
+//    private UserService userService;
+//
+//    public UserInteractorImpl(JsonPlaceholderApiView jsonPlaceholderApiView, UserService userService) {
+//        this.jsonPlaceholderApiView = jsonPlaceholderApiView;
+//        this.userService = userService;
+//
+//        JsonPlaceholderApiComponent.Injector.buildComponent((JsonPlaceholderApiActivity) jsonPlaceholderApiView).inject(this);
+//
+//    }
 
     @Override
     public void findAllUser() {

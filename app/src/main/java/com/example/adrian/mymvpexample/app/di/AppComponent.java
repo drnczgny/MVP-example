@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import com.example.adrian.mymvpexample.app.MyApp;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.Component;
 import retrofit2.Retrofit;
@@ -13,7 +14,7 @@ import retrofit2.Retrofit;
  * Created by Adrian_Czigany on 3/1/2017.
  */
 
-@AppScope
+@Singleton
 @Component(modules = {AppModule.class, NetworkModule.class})
 public interface AppComponent {
 
