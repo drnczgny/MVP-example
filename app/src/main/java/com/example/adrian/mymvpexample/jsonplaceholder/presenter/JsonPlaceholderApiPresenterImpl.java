@@ -1,6 +1,11 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.presenter;
 
+import com.example.adrian.mymvpexample.jsonplaceholder.interactor.AlbumInteractor;
+import com.example.adrian.mymvpexample.jsonplaceholder.interactor.CommentInteractor;
+import com.example.adrian.mymvpexample.jsonplaceholder.interactor.PhotoInteractor;
 import com.example.adrian.mymvpexample.jsonplaceholder.interactor.PostInteractor;
+import com.example.adrian.mymvpexample.jsonplaceholder.interactor.TodoInteractor;
+import com.example.adrian.mymvpexample.jsonplaceholder.interactor.UserInteractor;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
 
 /**
@@ -11,30 +16,34 @@ public class JsonPlaceholderApiPresenterImpl implements JsonPlaceholderApiPresen
 
     private JsonPlaceholderApiView jsonPlaceholderApiView;
 
-
-    //TODO: Constructor injection.
     private PostInteractor postInteractor;
 
+    private CommentInteractor commentInteractor;
 
-//    CommentInteractor commentInteractor;
-//
-//    @Injectfgh
-//    AlbumInteractor albumInteractor;
-//
-//    @Inject
-//    PhotoInteractor photoInteractor;
-//
-//    @Inject
-//    TodoInteractor todoInteractor;
-//
-//    @Inject
-////    @Named("withService")
-//            UserInteractor userInteractor;
+    private AlbumInteractor albumInteractor;
 
-    public JsonPlaceholderApiPresenterImpl(JsonPlaceholderApiView jsonPlaceholderApiView, PostInteractor postInteractor) {
+    private PhotoInteractor photoInteractor;
+
+    private TodoInteractor todoInteractor;
+
+    private UserInteractor userInteractor;
+
+    public JsonPlaceholderApiPresenterImpl(JsonPlaceholderApiView jsonPlaceholderApiView,
+                                           PostInteractor postInteractor,
+                                           CommentInteractor commentInteractor,
+                                           AlbumInteractor albumInteractor,
+                                           PhotoInteractor photoInteractor,
+                                           TodoInteractor todoInteractor,
+                                           UserInteractor userInteractor) {
+
         this.jsonPlaceholderApiView = jsonPlaceholderApiView;
         this.postInteractor = postInteractor;
-        postInteractor.toString();
+        this.commentInteractor = commentInteractor;
+        this.albumInteractor = albumInteractor;
+        this.photoInteractor = photoInteractor;
+        this.todoInteractor = todoInteractor;
+        this.userInteractor = userInteractor;
+
     }
 
     @Override
@@ -49,26 +58,26 @@ public class JsonPlaceholderApiPresenterImpl implements JsonPlaceholderApiPresen
 
     @Override
     public void onClickBtnFindAllComment() {
-//        commentInteractor.findAllComment();
+        commentInteractor.findAllComment();
     }
 
     @Override
     public void onClickBtnFindAllAlbum() {
-//        albumInteractor.findAllAlbum();
+        albumInteractor.findAllAlbum();
     }
 
     @Override
     public void onClickBtnFindAllPhoto() {
-//        photoInteractor.findAllPhoto();
+        photoInteractor.findAllPhoto();
     }
 
     @Override
     public void onClickBtnFindAllTodo() {
-//        todoInteractor.findAllTodo();
+        todoInteractor.findAllTodo();
     }
 
     @Override
     public void onClickBtnFindAllUser() {
-//        userInteractor.findAllUser();
+        userInteractor.findAllUser();
     }
 }

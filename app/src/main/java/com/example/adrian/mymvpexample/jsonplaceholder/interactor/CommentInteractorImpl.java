@@ -4,11 +4,8 @@ import android.util.Log;
 
 import com.example.adrian.mymvpexample.jsonplaceholder.model.Comment;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.CommentService;
-import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,14 +19,10 @@ public class CommentInteractorImpl implements CommentInteractor {
 
     private static final String TAG = CommentInteractorImpl.class.getName();
 
-    private JsonPlaceholderApiView jsonPlaceholderApiView;
+    private CommentService commentService;
 
-    CommentService commentService;
-
-    public CommentInteractorImpl(JsonPlaceholderApiView jsonPlaceholderApiView) {
-        this.jsonPlaceholderApiView = jsonPlaceholderApiView;
-
-
+    public CommentInteractorImpl(final CommentService commentService) {
+        this.commentService = commentService;
     }
 
     @Override

@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.example.adrian.mymvpexample.jsonplaceholder.model.Post;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.PostService;
-import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
 
 import java.util.List;
 
@@ -20,17 +19,13 @@ public class PostInteractorImpl implements PostInteractor {
 
     private static final String TAG = PostInteractorImpl.class.getName();
 
-    private JsonPlaceholderApiView jsonPlaceholderApiView;
-
     private Observer<List<Post>> postListObserver;
     private Observer<Post> postObserver;
 
+    private PostService postService;
 
-    PostService postService;
-
-    public PostInteractorImpl(JsonPlaceholderApiView jsonPlaceholderApiView) {
-        this.jsonPlaceholderApiView = jsonPlaceholderApiView;
-
+    public PostInteractorImpl(final PostService postService) {
+        this.postService = postService;
 
         createPostListObserver();
         createPostObserver();

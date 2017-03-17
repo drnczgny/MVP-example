@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.example.adrian.mymvpexample.jsonplaceholder.model.Album;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.AlbumService;
-import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
 
 import java.util.List;
 
@@ -20,15 +19,10 @@ public class AlbumInteractorImpl implements AlbumInteractor {
 
     private static final String TAG = AlbumInteractorImpl.class.getName();
 
-    private JsonPlaceholderApiView jsonPlaceholderApiView;
+    private AlbumService albumService;
 
-
-    AlbumService albumService;
-
-    public AlbumInteractorImpl(JsonPlaceholderApiView jsonPlaceholderApiView) {
-        this.jsonPlaceholderApiView = jsonPlaceholderApiView;
-
-
+    public AlbumInteractorImpl(final AlbumService albumService) {
+        this.albumService = albumService;
     }
 
     @Override

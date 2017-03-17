@@ -1,5 +1,6 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.di;
 
+import com.example.adrian.mymvpexample.base.di.ActivityScope;
 import com.example.adrian.mymvpexample.jsonplaceholder.interactor.AlbumInteractor;
 import com.example.adrian.mymvpexample.jsonplaceholder.interactor.AlbumInteractorImpl;
 import com.example.adrian.mymvpexample.jsonplaceholder.interactor.CommentInteractor;
@@ -14,6 +15,12 @@ import com.example.adrian.mymvpexample.jsonplaceholder.interactor.UserInteractor
 import com.example.adrian.mymvpexample.jsonplaceholder.interactor.UserInteractorImpl;
 import com.example.adrian.mymvpexample.jsonplaceholder.presenter.JsonPlaceholderApiPresenter;
 import com.example.adrian.mymvpexample.jsonplaceholder.presenter.JsonPlaceholderApiPresenterImpl;
+import com.example.adrian.mymvpexample.jsonplaceholder.service.AlbumService;
+import com.example.adrian.mymvpexample.jsonplaceholder.service.CommentService;
+import com.example.adrian.mymvpexample.jsonplaceholder.service.PhotoService;
+import com.example.adrian.mymvpexample.jsonplaceholder.service.PostService;
+import com.example.adrian.mymvpexample.jsonplaceholder.service.TodoService;
+import com.example.adrian.mymvpexample.jsonplaceholder.service.UserService;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
 
@@ -33,59 +40,58 @@ public class JsonPlaceholderApiBaseModule {
         this.jsonPlaceholderApiActivity = jsonPlaceholderApiActivity;
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
     JsonPlaceholderApiView providesJsonPlaceholderApiView() {
         return jsonPlaceholderApiActivity;
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
-    PostInteractor providePostInteractor() {
-        return new PostInteractorImpl(providesJsonPlaceholderApiView());
+    PostInteractor providePostInteractor(PostService postService) {
+        return new PostInteractorImpl(postService);
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
-    CommentInteractor provideCommentInteractor() {
-        return new CommentInteractorImpl(providesJsonPlaceholderApiView());
+    CommentInteractor provideCommentInteractor(CommentService commentService) {
+        return new CommentInteractorImpl(commentService);
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
-    AlbumInteractor provideAlbumInteractor() {
-        return new AlbumInteractorImpl(providesJsonPlaceholderApiView());
+    AlbumInteractor provideAlbumInteractor(AlbumService albumService) {
+        return new AlbumInteractorImpl(albumService);
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
-    PhotoInteractor providePhotoInteractor() {
-        return new PhotoInteractorImpl(providesJsonPlaceholderApiView());
+    PhotoInteractor providePhotoInteractor(PhotoService photoService) {
+        return new PhotoInteractorImpl(photoService);
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
-    TodoInteractor provideTodoInteractor() {
-        return new TodoInteractorImpl(providesJsonPlaceholderApiView());
+    TodoInteractor provideTodoInteractor(TodoService todoService) {
+        return new TodoInteractorImpl(todoService);
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
-    UserInteractor provideUserInteractor() {
-        return new UserInteractorImpl(providesJsonPlaceholderApiView());
+    UserInteractor provideUserInteractor(UserService userService) {
+        return new UserInteractorImpl(userService);
     }
 
-//    @JsonPlaceholderScope
-//    @Provides
-//    @Named("withService")
-//    UserInteractor provideUserInteractorWithService(UserService userService) {
-//        return new UserInteractorImpl(providesJsonPlaceholderApiView(), userService);
-//    }
-
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
-    JsonPlaceholderApiPresenter providesJsonPlaceholderApiPresenter(JsonPlaceholderApiView jsonPlaceholderApiView, PostInteractor postInteractor) {
-        return new JsonPlaceholderApiPresenterImpl(jsonPlaceholderApiView, postInteractor);
+    JsonPlaceholderApiPresenter providesJsonPlaceholderApiPresenter(JsonPlaceholderApiView jsonPlaceholderApiView,
+                                                                    PostInteractor postInteractor,
+                                                                    CommentInteractor commentInteractor,
+                                                                    AlbumInteractor albumInteractor,
+                                                                    PhotoInteractor photoInteractor,
+                                                                    TodoInteractor todoInteractor,
+                                                                    UserInteractor userInteractor) {
+        return new JsonPlaceholderApiPresenterImpl(jsonPlaceholderApiView, postInteractor, commentInteractor, albumInteractor, photoInteractor, todoInteractor, userInteractor);
     }
 
 }

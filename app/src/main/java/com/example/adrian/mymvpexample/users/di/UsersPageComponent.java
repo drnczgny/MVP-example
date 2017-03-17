@@ -1,6 +1,7 @@
 package com.example.adrian.mymvpexample.users.di;
 
-import com.example.adrian.mymvpexample.jsonplaceholder.di.JsonPlaceholderApiComponent;
+import com.example.adrian.mymvpexample.app.di.AppComponent;
+import com.example.adrian.mymvpexample.base.di.ActivityScope;
 import com.example.adrian.mymvpexample.users.view.UsersPageActivity;
 
 import dagger.Component;
@@ -9,8 +10,8 @@ import dagger.Component;
  * Created by Adrian_Czigany on 3/17/2017.
  */
 
-@UsersPageScope
-@Component(dependencies = JsonPlaceholderApiComponent.class, modules = {UsersPageModule.class})
+@ActivityScope
+@Component(dependencies = AppComponent.class, modules = {UsersPageModule.class})
 public interface UsersPageComponent {
 
     void inject(UsersPageActivity usersPageActivity);
@@ -21,7 +22,7 @@ public interface UsersPageComponent {
 
         public static UsersPageComponent buildComponent(UsersPageActivity activity) {
             return DaggerUsersPageComponent.builder()
-                    .jsonPlaceholderApiComponent(JsonPlaceholderApiComponent.Injector.getJsonPlaceholderApiComponent())
+                    .appComponent(AppComponent.Injector.getComponent())
                     .usersPageModule(new UsersPageModule(activity))
                     .build();
         }

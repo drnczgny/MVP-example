@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.example.adrian.mymvpexample.jsonplaceholder.model.Photo;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.PhotoService;
-import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiView;
 
 import java.util.List;
 
@@ -20,14 +19,10 @@ public class PhotoInteractorImpl implements PhotoInteractor {
 
     private static final String TAG = PhotoInteractorImpl.class.getName();
 
-    private JsonPlaceholderApiView jsonPlaceholderApiView;
+    private PhotoService photoService;
 
-    PhotoService photoService;
-
-    public PhotoInteractorImpl(JsonPlaceholderApiView jsonPlaceholderApiView) {
-        this.jsonPlaceholderApiView = jsonPlaceholderApiView;
-
-
+    public PhotoInteractorImpl(final PhotoService photoService) {
+        this.photoService = photoService;
     }
 
     @Override

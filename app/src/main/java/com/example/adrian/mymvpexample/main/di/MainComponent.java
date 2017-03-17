@@ -1,6 +1,7 @@
 package com.example.adrian.mymvpexample.main.di;
 
 import com.example.adrian.mymvpexample.app.di.AppComponent;
+import com.example.adrian.mymvpexample.base.di.ActivityScope;
 import com.example.adrian.mymvpexample.main.view.MainActivity;
 
 import dagger.Component;
@@ -9,7 +10,7 @@ import dagger.Component;
  * Created by cadri on 2017. 03. 06..
  */
 
-@MainScope
+@ActivityScope
 @Component(dependencies = AppComponent.class, modules = {MainModule.class})
 public interface MainComponent {
 

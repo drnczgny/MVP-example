@@ -1,4 +1,4 @@
-package com.example.adrian.mymvpexample.users.di;
+package com.example.adrian.mymvpexample.base.di;
 
 import javax.inject.Scope;
 
@@ -7,5 +7,5 @@ import javax.inject.Scope;
  */
 
 @Scope
-public @interface UsersPageScope {
+public @interface ActivityScope {
 }

@@ -22,13 +22,10 @@ public class TodoInteractorImpl implements TodoInteractor {
 
     private JsonPlaceholderApiView jsonPlaceholderApiView;
 
+    private TodoService todoService;
 
-    TodoService todoService;
-
-    public TodoInteractorImpl(JsonPlaceholderApiView jsonPlaceholderApiView) {
-        this.jsonPlaceholderApiView = jsonPlaceholderApiView;
-
-
+    public TodoInteractorImpl(final TodoService todoService) {
+        this.todoService = todoService;
     }
 
     @Override

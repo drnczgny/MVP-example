@@ -1,6 +1,7 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.di;
 
 import com.example.adrian.mymvpexample.app.di.AppComponent;
+import com.example.adrian.mymvpexample.base.di.ActivityScope;
 import com.example.adrian.mymvpexample.jsonplaceholder.interactor.UserInteractor;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 
@@ -10,7 +11,7 @@ import dagger.Component;
  * Created by Adrian_Czigany on 3/8/2017.
  */
 
-@JsonPlaceholderScope
+@ActivityScope
 @Component(dependencies = AppComponent.class, modules = {JsonPlaceholderApiBaseModule.class})
 public interface JsonPlaceholderApiComponent {
 

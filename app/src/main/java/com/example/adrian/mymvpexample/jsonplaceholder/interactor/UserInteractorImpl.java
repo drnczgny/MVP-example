@@ -22,12 +22,10 @@ public class UserInteractorImpl implements UserInteractor {
 
     private JsonPlaceholderApiView jsonPlaceholderApiView;
 
-    UserService userService;
+    private UserService userService;
 
-    public UserInteractorImpl(JsonPlaceholderApiView jsonPlaceholderApiView) {
-        this.jsonPlaceholderApiView = jsonPlaceholderApiView;
-
-
+    public UserInteractorImpl(final UserService userService) {
+        this.userService = userService;
     }
 
 //    private UserService userService;

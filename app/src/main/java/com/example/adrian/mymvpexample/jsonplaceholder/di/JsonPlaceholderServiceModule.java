@@ -1,5 +1,6 @@
 package com.example.adrian.mymvpexample.jsonplaceholder.di;
 
+import com.example.adrian.mymvpexample.base.di.ActivityScope;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.AlbumService;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.CommentService;
 import com.example.adrian.mymvpexample.jsonplaceholder.service.PhotoService;
@@ -20,42 +21,42 @@ import retrofit2.Retrofit;
 @Module
 public class JsonPlaceholderServiceModule {
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
     PostService providePostService(@Named("jsonplaceholderapi") Retrofit retrofit) {
         PostService postService = retrofit.create(PostService.class);
         return postService;
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
     CommentService provideCommentService(@Named("jsonplaceholderapi") Retrofit retrofit) {
         CommentService commentService = retrofit.create(CommentService.class);
         return commentService;
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
     AlbumService provideAlbumService(@Named("jsonplaceholderapi") Retrofit retrofit) {
         AlbumService albumService = retrofit.create(AlbumService.class);
         return albumService;
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
     PhotoService providePhotoService(@Named("jsonplaceholderapi") Retrofit retrofit) {
         PhotoService photoService = retrofit.create(PhotoService.class);
         return photoService;
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
     TodoService provideTodoService(@Named("jsonplaceholderapi") Retrofit retrofit) {
         TodoService todoService = retrofit.create(TodoService.class);
         return todoService;
     }
 
-    @JsonPlaceholderScope
+    @ActivityScope
     @Provides
     UserService provideUserService(@Named("jsonplaceholderapi") Retrofit retrofit) {
         UserService userService = retrofit.create(UserService.class);
