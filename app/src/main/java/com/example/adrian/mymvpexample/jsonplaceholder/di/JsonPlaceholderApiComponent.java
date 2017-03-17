@@ -2,7 +2,6 @@ package com.example.adrian.mymvpexample.jsonplaceholder.di;
 
 import com.example.adrian.mymvpexample.app.di.AppComponent;
 import com.example.adrian.mymvpexample.base.di.ActivityScope;
-import com.example.adrian.mymvpexample.jsonplaceholder.interactor.UserInteractor;
 import com.example.adrian.mymvpexample.jsonplaceholder.view.JsonPlaceholderApiActivity;
 
 import dagger.Component;
@@ -16,11 +15,6 @@ import dagger.Component;
 public interface JsonPlaceholderApiComponent {
 
     void inject(JsonPlaceholderApiActivity jsonPlaceholderApiActivity);
-
-    UserInteractor userInteractor();
-
-//    @Named("withService")
-//    UserInteractor userInteractorWithService();
 
     final class Injector {
 

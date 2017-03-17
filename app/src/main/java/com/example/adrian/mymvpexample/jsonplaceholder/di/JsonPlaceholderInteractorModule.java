@@ -27,7 +27,7 @@ import dagger.Provides;
  * Created by Adrian_Czigany on 3/17/2017.
  */
 
-@Module
+@Module (includes = {JsonPlaceholderServiceModule.class})
 public class JsonPlaceholderInteractorModule {
 
     @ActivityScope
