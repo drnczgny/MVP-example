@@ -17,7 +17,6 @@ public class UsersPagePresenterImpl implements UsersPagePresenter {
         this.usersPageView = usersPageView;
         this.userInteractor = userInteractor;
 
-        userInteractor.findAllUser();
     }
 
 

@@ -2,6 +2,7 @@ package com.example.adrian.mymvpexample.jsonplaceholder.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.example.adrian.mymvpexample.R;
@@ -17,6 +18,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class JsonPlaceholderApiActivity extends BaseActivity implements JsonPlaceholderApiView {
+
+    private static final String TAG = JsonPlaceholderApiActivity.class.getName();
 
     @BindView(R.id.btnFindAllPost)
     Button btnFindAllPost;
@@ -91,7 +94,8 @@ public class JsonPlaceholderApiActivity extends BaseActivity implements JsonPlac
     }
 
     @OnClick(R.id.btnUsersPage)
-    public void onClickBtnUsersPager() {
+    public void onClickBtnUsersPage() {
+        Log.i(TAG, "onClickBtnUsersPage method ....");
         Intent intent = new Intent(JsonPlaceholderApiActivity.this, UsersPageActivity.class);
         startActivity(intent);
     }

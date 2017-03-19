@@ -42,14 +42,14 @@ public class OmdbModule {
 
     @Provides
     @OmdbScope
-    OmdbInteractor provideOmdbInteractor() {
-        return new OmdbInteractorImpl(provideOmdApiView());
+    OmdbInteractor provideOmdbInteractor(OmdbApiView omdbApiView) {
+        return new OmdbInteractorImpl(omdbApiView);
     }
 
     @Provides
     @OmdbScope
-    public OmdbPresenter provideOmdbPresenter() {
-        return new OmdbPresenterImpl(provideOmdApiView(), provideOmdbInteractor());
+    public OmdbPresenter provideOmdbPresenter(OmdbApiView omdbApiView, OmdbInteractor omdbInteractor) {
+        return new OmdbPresenterImpl(omdbApiView, omdbInteractor);
     }
 
     @Provides

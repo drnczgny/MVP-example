@@ -36,6 +36,6 @@ public class UsersPageActivity extends BaseActivity implements UsersPageView {
 
     @OnClick(R.id.btnFindAllUser)
     public void onClickBtnFindAllUser() {
-        usersPagePresenter.onClickBtnFindAllUser();
+//        usersPagePresenter.onClickBtnFindAllUser();
     }
 }
